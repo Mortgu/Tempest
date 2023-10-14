@@ -1,0 +1,5 @@
+name: Tempest
+version: '${project.version}'
+main: de.mortis.Main
+api-version: '1.20'
+authors: [Mortis]
