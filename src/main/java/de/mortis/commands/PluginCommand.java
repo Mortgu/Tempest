@@ -1,6 +1,7 @@
 package de.mortis.commands;
 
 import de.mortis.Main;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -9,12 +10,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public abstract class PluginCommand implements CommandExecutor, TabCompleter {
+    @Getter
     private final CommandInfo commandInfo;
 
     private List<String> delayedPlayer = new ArrayList<>();
@@ -26,10 +25,6 @@ public abstract class PluginCommand implements CommandExecutor, TabCompleter {
     public PluginCommand() {
         commandInfo = getClass().getDeclaredAnnotation(CommandInfo.class);
         Objects.requireNonNull(commandInfo, "Commands must have CommandInfo annotations");
-    }
-
-    public CommandInfo getCommandInfo() {
-        return commandInfo;
     }
 
     @Override

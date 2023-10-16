@@ -1,12 +1,10 @@
 package de.mortis.manager;
 
+import de.mortis.Main;
+
 public class BlueprintManager extends PluginManager {
 
-    public BlueprintManager() {
-        super();
-    }
-
-    public BlueprintManager create() {
-        return this;
+    public BlueprintManager(Main plugin) {
+        super(plugin);
     }
 }

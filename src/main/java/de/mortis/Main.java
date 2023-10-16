@@ -4,12 +4,12 @@ import de.mortis.commands.PluginCommand;
 import de.mortis.manager.BlueprintManager;
 import de.mortis.manager.PluginManager;
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Objects;
 
 @Getter
 public final class Main extends JavaPlugin {
@@ -22,13 +22,15 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        Bukkit.getLogger().info("Keine Ahnung");
+
         instance = this;
 
         String packageName = getClass().getPackage().getName();
         this.registerListeners(packageName);
         this.registerCommands(packageName);
 
-        blueprintManager = new BlueprintManager();
+        blueprintManager = new BlueprintManager(this);
     }
 
     @Override
@@ -55,8 +57,8 @@ public final class Main extends JavaPlugin {
                 getCommand(pluginCommand.getCommandInfo().name()).setExecutor(pluginCommand);
                 getCommand(pluginCommand.getCommandInfo().name()).setTabCompleter(pluginCommand);
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
-                     NoSuchMethodException exception) {
-                throw new RuntimeException();
+                     NoSuchMethodException e) {
+                e.printStackTrace();
             }
         }
     }
