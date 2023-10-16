@@ -3,3 +3,12 @@ version: '${project.version}'
 main: de.mortis.Main
 api-version: '1.20'
 authors: [Mortis]
+commands:
+  blueprint:
+    description: System command
+    usage: /<command>
+    permission: core.blueprint
+  area:
+    description: System command
+    usage: /<command>
+    permission: core.packet

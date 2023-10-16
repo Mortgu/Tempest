@@ -1,4 +1,4 @@
-package de.mortis.manager;
+package de.mortis.managers;
 
 import de.mortis.Main;
 

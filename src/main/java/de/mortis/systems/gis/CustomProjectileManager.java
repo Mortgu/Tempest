@@ -1,6 +1,7 @@
 package de.mortis.systems.gis;
 
 import de.mortis.Main;
+import de.mortis.systems.gis.types.ProjectileTypes;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Projectile;
 import org.bukkit.persistence.PersistentDataType;
