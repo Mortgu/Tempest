@@ -3,6 +3,7 @@ package de.mortis;
 import de.mortis.commands.PluginCommand;
 import de.mortis.managers.BlueprintManager;
 import de.mortis.managers.PluginManager;
+import de.mortis.systems.PlayerStateManager;
 import de.mortis.systems.gis.CustomItemManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -11,7 +12,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Objects;
 
 @Getter
 public final class Main extends JavaPlugin {
@@ -25,9 +25,13 @@ public final class Main extends JavaPlugin {
     @Getter
     public CustomItemManager customItemManager;
 
+    @Getter
+    public PlayerStateManager playerStateManager;
+
     @Override
     public void onEnable() {
         instance = this;
+        playerStateManager = new PlayerStateManager(this);
         customItemManager = new CustomItemManager(this);
 
         String packageName = getClass().getPackage().getName();
