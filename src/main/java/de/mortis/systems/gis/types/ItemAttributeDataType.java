@@ -31,8 +31,7 @@ public class ItemAttributeDataType implements PersistentDataType<byte[], Attribu
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
             return (AttributeInformation) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return null;
     }
 }

@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class AttributeInformation implements Serializable {
+public class AttributeInformation<T, Z> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

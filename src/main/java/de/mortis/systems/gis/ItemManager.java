@@ -22,15 +22,22 @@ public class ItemManager {
         this.itemAttributeKey = new NamespacedKey(plugin, "item-attribute");
     }
 
-    public void addItemAttribute(ItemStack itemStack, AttributeInformation attributeInformation) {
+    public void addItemAttribute(ItemStack itemStack, AttributeInformation ...attributeInformation) {
         ItemMeta itemMeta = itemStack.getItemMeta();
 
         if (itemMeta == null) {
             return;
         }
 
+        PersistentDataContainer newPersistentDataContainer = itemMeta.getPersistentDataContainer().getAdapterContext().newPersistentDataContainer();
+        for (AttributeInformation ai : attributeInformation) {
+            newPersistentDataContainer.set(new NamespacedKey(Main.getInstance(), ai.getItemAttributeType().toString()), PersistentDataType.INTEGER, ai.getAttributeValue());
+        }
+
         PersistentDataContainer persistentDataContainer = itemMeta.getPersistentDataContainer();
-        persistentDataContainer.set(this.itemAttributeKey, new ItemAttributeDataType(), attributeInformation);
+        persistentDataContainer.set(this.itemAttributeKey, PersistentDataType.TAG_CONTAINER, newPersistentDataContainer);
+
+        //persistentDataContainer.set(this.itemAttributeKey, PersistentDataType.TAG_CONTAINER, testContainer1);
         itemStack.setItemMeta(itemMeta);
     }
 
