@@ -1,6 +1,9 @@
 package de.mortis.systems.gis;
 
 import de.mortis.Main;
+import de.mortis.systems.gis.types.AttributeInformation;
+import de.mortis.systems.gis.types.ItemAttributeDataType;
+import de.mortis.systems.gis.types.ItemAttributeTypes;
 import de.mortis.systems.gis.types.ItemTypes;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -8,13 +11,27 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-public class CustomItemManager {
+public class ItemManager {
     // https://www.spigotmc.org/threads/how-to-handle-custom-items.593039/
 
     private final NamespacedKey itemTypeKey;
+    private final NamespacedKey itemAttributeKey;
 
-    public CustomItemManager(Main plugin) {
+    public ItemManager(Main plugin) {
         this.itemTypeKey = new NamespacedKey(plugin, "item-type");
+        this.itemAttributeKey = new NamespacedKey(plugin, "item-attribute");
+    }
+
+    public void addItemAttribute(ItemStack itemStack, AttributeInformation attributeInformation) {
+        ItemMeta itemMeta = itemStack.getItemMeta();
+
+        if (itemMeta == null) {
+            return;
+        }
+
+        PersistentDataContainer persistentDataContainer = itemMeta.getPersistentDataContainer();
+        persistentDataContainer.set(this.itemAttributeKey, new ItemAttributeDataType(), attributeInformation);
+        itemStack.setItemMeta(itemMeta);
     }
 
     public void setTypeOfItem(ItemStack itemStack, ItemTypes itemType) {

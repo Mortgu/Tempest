@@ -6,11 +6,11 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Projectile;
 import org.bukkit.persistence.PersistentDataType;
 
-public class CustomProjectileManager {
+public class ProjectileManager {
 
     private final NamespacedKey customProjectileKey;
 
-    public CustomProjectileManager(Main plugin) {
+    public ProjectileManager(Main plugin) {
         this.customProjectileKey = new NamespacedKey(plugin, "custom-projectile-type");
     }
 

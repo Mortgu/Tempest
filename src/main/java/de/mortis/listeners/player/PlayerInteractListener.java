@@ -20,7 +20,7 @@ public class PlayerInteractListener implements Listener {
         if (itemStack == null)
             return;
 
-        ItemTypes itemType = plugin.getCustomItemManager().getTypeOfItem(itemStack);
+        ItemTypes itemType = plugin.getItemManager().getTypeOfItem(itemStack);
 
         if (itemType != null) {
             itemType.onInteract(event);

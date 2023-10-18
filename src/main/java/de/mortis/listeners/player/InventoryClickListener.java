@@ -20,7 +20,7 @@ public class InventoryClickListener implements Listener {
         if (clickedItem == null)
             return;
 
-        ItemTypes itemType = plugin.getCustomItemManager().getTypeOfItem(clickedItem);
+        ItemTypes itemType = plugin.getItemManager().getTypeOfItem(clickedItem);
 
         if (itemType != null) {
             itemType.onInventoryClick(event);

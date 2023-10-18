@@ -25,7 +25,7 @@ public class BlueprintCommand extends PluginCommand {
                     .setDisplayName(" ")
                     .build();
 
-            plugin.getCustomItemManager().setTypeOfItem(inventoryItem, ItemTypes.MENU_ITEM);
+            plugin.getItemManager().setTypeOfItem(inventoryItem, ItemTypes.MENU_ITEM);
 
             inventory.setItem(i, inventoryItem);
         }

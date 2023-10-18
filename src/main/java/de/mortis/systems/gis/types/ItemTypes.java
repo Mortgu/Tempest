@@ -67,6 +67,17 @@ public enum ItemTypes {
         public void onInventoryClick(InventoryClickEvent event) {
             event.setCancelled(true);
         }
+    },
+    WORLD_ITEM() {
+        @Override
+        public void onInteract(PlayerInteractEvent event) {
+
+        }
+
+        @Override
+        public void onInventoryClick(InventoryClickEvent event) {
+
+        }
     };
 
     public String displayName;
