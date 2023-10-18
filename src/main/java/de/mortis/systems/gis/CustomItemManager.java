@@ -14,7 +14,7 @@ public class CustomItemManager {
     private final NamespacedKey itemTypeKey;
 
     public CustomItemManager(Main plugin) {
-        this.itemTypeKey = new NamespacedKey(plugin, "custom-item-type");
+        this.itemTypeKey = new NamespacedKey(plugin, "item-type");
     }
 
     public void setTypeOfItem(ItemStack itemStack, ItemTypes itemType) {

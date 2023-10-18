@@ -65,10 +65,6 @@ public final class Main extends JavaPlugin {
                 getCommand(pluginCommand.getCommandInfo().name()).setExecutor(pluginCommand);
                 getCommand(pluginCommand.getCommandInfo().name()).setTabCompleter(pluginCommand);
 
-                getCommand(pluginCommand.getCommandInfo().name());
-
-                Bukkit.getLogger().info(pluginCommand.getCommandInfo().name());
-
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                      NoSuchMethodException e) {
                 e.printStackTrace();

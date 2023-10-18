@@ -11,4 +11,4 @@ commands:
   area:
     description: System command
     usage: /<command>
-    permission: core.packet
+    permission: core.area
