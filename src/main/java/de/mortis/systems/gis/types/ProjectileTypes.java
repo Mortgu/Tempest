@@ -1,4 +1,4 @@
-package de.mortis.systems.gis;
+package de.mortis.systems.gis.types;
 
 import org.bukkit.Location;
 import org.bukkit.World;

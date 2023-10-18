@@ -1,6 +1,7 @@
 package de.mortis.systems.gis;
 
 import de.mortis.Main;
+import de.mortis.systems.gis.types.ItemTypes;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
