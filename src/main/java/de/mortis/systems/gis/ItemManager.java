@@ -2,8 +2,6 @@ package de.mortis.systems.gis;
 
 import de.mortis.Main;
 import de.mortis.systems.gis.types.AttributeInformation;
-import de.mortis.systems.gis.types.ItemAttributeDataType;
-import de.mortis.systems.gis.types.ItemAttributeTypes;
 import de.mortis.systems.gis.types.ItemTypes;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
