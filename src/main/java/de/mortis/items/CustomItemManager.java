@@ -44,8 +44,11 @@ public class CustomItemManager {
         PersistentDataContainer modifiersDataContainer = itemMeta.getPersistentDataContainer().getAdapterContext().newPersistentDataContainer();
 
         for (ItemAttributes ia : itemAttributes) {
+            modifiersDataContainer.set(this.attributeValueNamespacedKey, PersistentDataType.INTEGER, ia.getValue());
+            modifiersDataContainer.set(this.attributeModifierNamespacedKey, PersistentDataType.INTEGER, ia.getModifier());
             attributeDataContainer.set(new NamespacedKey(Main.getInstance(), ia.getWeaponAttributes().name()), PersistentDataType.TAG_CONTAINER, modifiersDataContainer);
         }
+
 
         persistentDataContainer.set(this.attributesNamespacedKey, PersistentDataType.TAG_CONTAINER, attributeDataContainer);
         this.itemStack.setItemMeta(this.itemMeta);
@@ -57,5 +60,48 @@ public class CustomItemManager {
     public void addItemAttributeModifier() {}
 
     public void getItemAttribute() {}
+
+    /** SET AND GET TYPE OF THE ITEM **/
+
+    public CustomItemManager setTypeOfItem(ItemTypes itemType) {
+        PersistentDataContainer typeDataContainer = this.itemMeta.getPersistentDataContainer();
+        typeDataContainer.set(this.typeNamespacedKey, PersistentDataType.STRING, itemType.name());
+        this.itemStack.setItemMeta(this.itemMeta);
+        return this;
+    }
+
+    public void setTypeOfItem(ItemStack itemStack, ItemTypes itemType) {
+        ItemMeta meta = itemStack.getItemMeta();
+
+        if (meta == null)
+            return;
+
+        PersistentDataContainer typeDataContainer = meta.getPersistentDataContainer();
+        typeDataContainer.set(this.typeNamespacedKey, PersistentDataType.STRING, itemType.name());
+        itemStack.setItemMeta(meta);
+    }
+
+    public ItemTypes getTypeOfItem() {
+        PersistentDataContainer typeDataContainer = this.itemMeta.getPersistentDataContainer();
+        String typeValue = typeDataContainer.get(this.typeNamespacedKey, PersistentDataType.STRING);
+
+        if (typeValue == null) return null;
+
+        return ItemTypes.valueOf(typeValue);
+    }
+
+    public ItemTypes getTypeOfItem(ItemStack itemStack) {
+        ItemMeta meta = itemStack.getItemMeta();
+
+        if (meta == null)
+            return null;
+
+        PersistentDataContainer typeDataContainer = meta.getPersistentDataContainer();
+        String typeValue = typeDataContainer.get(this.typeNamespacedKey, PersistentDataType.STRING);
+
+        if (typeValue == null) return null;
+
+        return ItemTypes.valueOf(typeValue);
+    }
 
 }

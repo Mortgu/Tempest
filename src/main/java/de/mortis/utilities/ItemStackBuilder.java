@@ -16,6 +16,8 @@ public class ItemStackBuilder {
     public ItemStackBuilder(Material material) {
         itemStack = new ItemStack(material, 1);
         this.itemMeta = itemStack.getItemMeta();
+
+        this.setItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES);
     }
 
     public ItemStackBuilder setAmount(int amount) {

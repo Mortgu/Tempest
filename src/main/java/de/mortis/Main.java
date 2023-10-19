@@ -1,10 +1,10 @@
 package de.mortis;
 
 import de.mortis.commands.PluginCommand;
+import de.mortis.items.CustomItemManager;
 import de.mortis.managers.items.BlueprintManager;
 import de.mortis.managers.PluginManager;
 import de.mortis.systems.PlayerStateManager;
-import de.mortis.systems.gis.ItemManager;
 import lombok.Getter;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,7 +22,7 @@ public final class Main extends JavaPlugin {
     public BlueprintManager blueprintManager;
 
     @Getter
-    public ItemManager itemManager;
+    public CustomItemManager customItemManager;
 
     @Getter
     public PlayerStateManager playerStateManager;
@@ -31,7 +31,7 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         instance = this;
         playerStateManager = new PlayerStateManager(this);
-        itemManager = new ItemManager(this);
+        customItemManager = new CustomItemManager(this);
 
         String packageName = getClass().getPackage().getName();
         this.registerListeners(packageName);

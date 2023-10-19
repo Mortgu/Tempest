@@ -3,7 +3,7 @@ package de.mortis.commands.blueprint;
 import de.mortis.Main;
 import de.mortis.commands.CommandInfo;
 import de.mortis.commands.PluginCommand;
-import de.mortis.systems.gis.types.ItemTypes;
+import de.mortis.items.ItemTypes;
 import de.mortis.utilities.ItemStackBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -25,7 +25,7 @@ public class BlueprintCommand extends PluginCommand {
                     .setDisplayName(" ")
                     .build();
 
-            plugin.getItemManager().setTypeOfItem(inventoryItem, ItemTypes.MENU_ITEM);
+            plugin.getCustomItemManager().setTypeOfItem(inventoryItem, ItemTypes.MENU_ITEM);
 
             inventory.setItem(i, inventoryItem);
         }

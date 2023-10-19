@@ -1,7 +1,7 @@
 package de.mortis.listeners.player;
 
 import de.mortis.Main;
-import de.mortis.systems.gis.types.ItemTypes;
+import de.mortis.items.ItemTypes;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,7 +20,7 @@ public class InventoryClickListener implements Listener {
         if (clickedItem == null)
             return;
 
-        ItemTypes itemType = plugin.getItemManager().getTypeOfItem(clickedItem);
+        ItemTypes itemType = plugin.getCustomItemManager().getTypeOfItem(clickedItem);
 
         if (itemType != null) {
             itemType.onInventoryClick(event);
