@@ -1,4 +1,4 @@
-package de.mortis.systems;
+package de.mortis.player;
 
 import de.mortis.Main;
 import de.mortis.player.types.PlayerModes;

@@ -10,6 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 
 @CommandInfo(name = "blueprint", permission = "blueprint.*", requiresPlayer = true)
 public class BlueprintCommand extends PluginCommand {
@@ -20,6 +21,17 @@ public class BlueprintCommand extends PluginCommand {
     public void execute(Player player, String[] args) {
         Inventory inventory = Bukkit.createInventory(null, 54, "SkyBlock Menu");
 
+        ItemStack playerHead = new ItemStackBuilder(Material.PLAYER_HEAD)
+                .setItemType(ItemTypes.MENU_ITEM)
+                .build();
+
+        plugin.getCustomItemManager().setTypeOfItem(playerHead, ItemTypes.MENU_ITEM);
+
+        SkullMeta skull = (SkullMeta) playerHead.getItemMeta();
+        skull.setDisplayName(player.getName());
+        skull.setOwningPlayer(player);
+        playerHead.setItemMeta(skull);
+
         for (int i = 0; i < inventory.getSize(); i++) {
             ItemStack inventoryItem = new ItemStackBuilder(Material.BLACK_STAINED_GLASS_PANE)
                     .setDisplayName(" ")
@@ -29,6 +41,8 @@ public class BlueprintCommand extends PluginCommand {
 
             inventory.setItem(i, inventoryItem);
         }
+
+        inventory.setItem(13, playerHead);
 
         player.openInventory(inventory);
     }

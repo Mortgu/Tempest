@@ -1,5 +1,7 @@
 package de.mortis.utilities;
 
+import de.mortis.Main;
+import de.mortis.items.ItemTypes;
 import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
@@ -9,6 +11,8 @@ import org.jetbrains.annotations.NotNull;
 
 @Getter
 public class ItemStackBuilder {
+
+    private final Main plugin = Main.getInstance();
 
     private final ItemStack itemStack;
     private ItemMeta itemMeta;
@@ -32,6 +36,11 @@ public class ItemStackBuilder {
 
     public ItemStackBuilder setItemFlags(ItemFlag ...flags) {
         this.itemMeta.addItemFlags(flags);
+        return this;
+    }
+
+    public ItemStackBuilder setItemType(ItemTypes itemType) {
+        plugin.getCustomItemManager().setTypeOfItem(this.itemStack, itemType);
         return this;
     }
 

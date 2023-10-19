@@ -4,7 +4,7 @@ import de.mortis.commands.PluginCommand;
 import de.mortis.items.CustomItemManager;
 import de.mortis.managers.items.BlueprintManager;
 import de.mortis.managers.PluginManager;
-import de.mortis.systems.PlayerStateManager;
+import de.mortis.player.PlayerStateManager;
 import lombok.Getter;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
