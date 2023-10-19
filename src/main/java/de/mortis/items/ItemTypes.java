@@ -102,16 +102,17 @@ public enum ItemTypes {
     WORLD_ITEM() {
         @Override
         public void onInteract(PlayerInteractEvent event) {
-
+            event.getPlayer().sendMessage("Interaction with a world item");
         }
 
         @Override
         public void onInventoryClick(InventoryClickEvent event) {
-
+            event.getWhoClicked().sendMessage("Inventory click with a world item");
         }
 
         @Override
         public void onBlockBreak(BlockBreakEvent event) {
+            event.getPlayer().sendMessage("BlockBreak with a world item");
             event.setCancelled(true);
         }
     };

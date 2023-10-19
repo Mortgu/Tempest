@@ -103,5 +103,10 @@
             <artifactId>Foundation</artifactId>
             <version>6.5.4</version>
         </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>4.8.2</version>
+        </dependency>
     </dependencies>
 </project>

@@ -7,6 +7,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class CustomItemManager {
 
     // DEFINES THE TYPE OF THE ITEM
@@ -18,6 +22,9 @@ public class CustomItemManager {
     private final NamespacedKey attributeValueNamespacedKey;
     private final NamespacedKey attributeModifierNamespacedKey;
 
+    // ARRAY WITH ABILITY KEYS
+    private final NamespacedKey abilityNamespacedKey;
+
     private ItemStack itemStack;
     private ItemMeta itemMeta;
 
@@ -27,6 +34,8 @@ public class CustomItemManager {
 
         this.attributeValueNamespacedKey = new NamespacedKey(plugin, "value");
         this.attributeModifierNamespacedKey = new NamespacedKey(plugin, "modifier");
+
+        this.abilityNamespacedKey = new NamespacedKey(plugin, "item-abilities");
     }
 
     public CustomItemManager setItemStack(ItemStack itemStack) {
@@ -49,7 +58,6 @@ public class CustomItemManager {
             attributeDataContainer.set(new NamespacedKey(Main.getInstance(), ia.getWeaponAttributes().name()), PersistentDataType.TAG_CONTAINER, modifiersDataContainer);
         }
 
-
         persistentDataContainer.set(this.attributesNamespacedKey, PersistentDataType.TAG_CONTAINER, attributeDataContainer);
         this.itemStack.setItemMeta(this.itemMeta);
         return this;
@@ -60,6 +68,8 @@ public class CustomItemManager {
     public void addItemAttributeModifier() {}
 
     public void getItemAttribute() {}
+
+    public void getItemAttribute(ItemStack itemStack) {}
 
     /** SET AND GET TYPE OF THE ITEM **/
 
@@ -104,4 +114,17 @@ public class CustomItemManager {
         return ItemTypes.valueOf(typeValue);
     }
 
+    /*** SET AND GET THE ABILITY KEYS ***/
+    public void setItemAbilities(ItemAbilities ...itemAbilities) {
+        PersistentDataContainer persistentDataContainer = itemMeta.getPersistentDataContainer();
+        List<String> abilities = new ArrayList<>();
+
+        for (ItemAbilities ia : itemAbilities) {
+            abilities.add(ia.name());
+        }
+
+        persistentDataContainer.set(abilityNamespacedKey, PersistentDataType.STRING, String.join(";", abilities));
+
+        itemStack.setItemMeta(itemMeta);
+    }
 }
