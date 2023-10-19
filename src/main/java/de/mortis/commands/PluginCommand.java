@@ -69,16 +69,22 @@ public abstract class PluginCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
-    public CommandMap getCommandMap() throws NoSuchFieldException, IllegalAccessException {
-        if (!(Bukkit.getPluginManager() instanceof SimplePluginManager)) {
-            return null;
-        }
+    /**
+     *
+     *
+     public CommandMap getCommandMap() throws NoSuchFieldException, IllegalAccessException {
+     if (!(Bukkit.getPluginManager() instanceof SimplePluginManager)) {
+     return null;
+     }
 
-        Field field = SimplePluginManager.class.getDeclaredField("commandMap");
-        field.setAccessible(true);
+     Field field = SimplePluginManager.class.getDeclaredField("commandMap");
+     field.setAccessible(true);
 
-        return (CommandMap) field.get(Bukkit.getPluginManager());
-    }
+     return (CommandMap) field.get(Bukkit.getPluginManager());
+     }
+     * @param player
+     * @param args
+     */
 
     public void execute(Player player, String[] args) {}
     public void execute(CommandSender sender, String[] args) {}

@@ -80,15 +80,16 @@ public class CustomItemManager {
         return this;
     }
 
-    public void setTypeOfItem(ItemStack itemStack, ItemTypes itemType) {
+    public CustomItemManager setTypeOfItem(ItemStack itemStack, ItemTypes itemType) {
         ItemMeta meta = itemStack.getItemMeta();
 
         if (meta == null)
-            return;
+            return null;
 
         PersistentDataContainer typeDataContainer = meta.getPersistentDataContainer();
         typeDataContainer.set(this.typeNamespacedKey, PersistentDataType.STRING, itemType.name());
         itemStack.setItemMeta(meta);
+        return this;
     }
 
     public ItemTypes getTypeOfItem() {
@@ -126,5 +127,27 @@ public class CustomItemManager {
         persistentDataContainer.set(abilityNamespacedKey, PersistentDataType.STRING, String.join(";", abilities));
 
         itemStack.setItemMeta(itemMeta);
+    }
+
+    public ItemAbilities getItemAbility() {
+        PersistentDataContainer persistentDataContainer = itemMeta.getPersistentDataContainer();
+        String itemAbilities = persistentDataContainer.get(abilityNamespacedKey, PersistentDataType.STRING);
+
+        if (itemAbilities == null) return null;
+
+        return ItemAbilities.valueOf(itemAbilities);
+    }
+
+    public ItemAbilities getItemAbility(ItemStack itemStack) {
+        ItemMeta meta = itemStack.getItemMeta();
+
+        if (meta == null) return null;
+
+        PersistentDataContainer persistentDataContainer = meta.getPersistentDataContainer();
+        String itemAbilities = persistentDataContainer.get(abilityNamespacedKey, PersistentDataType.STRING);
+
+        if (itemAbilities == null) return null;
+
+        return ItemAbilities.valueOf(itemAbilities);
     }
 }

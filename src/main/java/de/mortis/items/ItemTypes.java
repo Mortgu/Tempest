@@ -1,11 +1,17 @@
 package de.mortis.items;
 
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.*;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public enum ItemTypes {
     WEAPON() {
+        @Override
+        public void onInventoryDrag(InventoryMoveItemEvent event) {
+
+        }
+
         @Override
         public void onInteract(PlayerInteractEvent event) {
             event.getPlayer().sendMessage("Interaction with Weapon#");
@@ -20,6 +26,11 @@ public enum ItemTypes {
         }
     },
     FARMING() {
+        @Override
+        public void onInventoryDrag(InventoryMoveItemEvent event) {
+
+        }
+
         @Override
         public void onInteract(PlayerInteractEvent event) {
 
@@ -37,6 +48,11 @@ public enum ItemTypes {
     },
     FISHING() {
         @Override
+        public void onInventoryDrag(InventoryMoveItemEvent event) {
+
+        }
+
+        @Override
         public void onInteract(PlayerInteractEvent event) {
 
         }
@@ -52,6 +68,11 @@ public enum ItemTypes {
         }
     },
     MINING() {
+        @Override
+        public void onInventoryDrag(InventoryMoveItemEvent event) {
+
+        }
+
         @Override
         public void onInteract(PlayerInteractEvent event) {
 
@@ -69,6 +90,11 @@ public enum ItemTypes {
     },
     BUILDING() {
         @Override
+        public void onInventoryDrag(InventoryMoveItemEvent event) {
+
+        }
+
+        @Override
         public void onInteract(PlayerInteractEvent event) {
 
         }
@@ -85,6 +111,11 @@ public enum ItemTypes {
     },
     MENU_ITEM() {
         @Override
+        public void onInventoryDrag(InventoryMoveItemEvent event) {
+            event.setCancelled(true);
+        }
+
+        @Override
         public void onInteract(PlayerInteractEvent event) {
 
         }
@@ -96,10 +127,15 @@ public enum ItemTypes {
 
         @Override
         public void onBlockBreak(BlockBreakEvent event) {
-
+            event.setCancelled(true);
         }
     },
     WORLD_ITEM() {
+        @Override
+        public void onInventoryDrag(InventoryMoveItemEvent event) {
+
+        }
+
         @Override
         public void onInteract(PlayerInteractEvent event) {
             event.getPlayer().sendMessage("Interaction with a world item");
@@ -117,6 +153,7 @@ public enum ItemTypes {
         }
     };
 
+    public abstract void onInventoryDrag(InventoryMoveItemEvent event);
     public abstract void onInteract(PlayerInteractEvent event);
     public abstract void onInventoryClick(InventoryClickEvent event);
     public abstract void onBlockBreak(BlockBreakEvent event);
