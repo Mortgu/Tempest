@@ -37,6 +37,16 @@ public enum ItemAbilities {
 
             graphicalUserInterface.addButton(13, itemStack, Bukkit.createInventory(null, 27, "test"));
 
+            graphicalUserInterface.addButton(20, new ItemStackBuilder(Material.DIAMOND_SWORD).build(), Bukkit.createInventory(null, 27, "test"));
+            graphicalUserInterface.addButton(21, new ItemStackBuilder(Material.ITEM_FRAME).build(), Bukkit.createInventory(null, 27, "test"));
+
+            graphicalUserInterface.addButton(22, new ItemStackBuilder(Material.EMERALD).build(), Bukkit.createInventory(null, 27, "test"));
+            graphicalUserInterface.addButton(23, new ItemStackBuilder(Material.WRITABLE_BOOK).build(), Bukkit.createInventory(null, 27, "test"));
+            graphicalUserInterface.addButton(24, new ItemStackBuilder(Material.CLOCK).build(), Bukkit.createInventory(null, 27, "test"));
+
+            graphicalUserInterface.addButton(24, new ItemStackBuilder(Material.CLOCK).build(), Bukkit.createInventory(null, 27, "test"));
+            graphicalUserInterface.addButton(49, new ItemStackBuilder(Material.BARRIER).build(), Bukkit.createInventory(null, 27, "test"));
+
             player.openInventory(graphicalUserInterface.build());
         }
     };

@@ -29,7 +29,7 @@ public class PlayerInteractListener implements Listener {
             itemType.onInteract(event);
         }
 
-        if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+        if (itemAbility != null && event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             itemAbility.onTrigger(player, event);
         }
     }

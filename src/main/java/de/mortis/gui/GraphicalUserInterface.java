@@ -12,7 +12,8 @@ import org.bukkit.inventory.ItemStack;
 @Getter
 public class GraphicalUserInterface {
 
-    private Main plugin = Main.getInstance();
+    // Main instance
+    private final Main plugin = Main.getInstance();
 
     private final Inventory inventory;
 

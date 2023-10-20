@@ -20,7 +20,6 @@ public class BlueprintCommand extends PluginCommand {
 
     @Override
     public void execute(Player player, String[] args) {
-        GraphicalUserInterface gameMenuInterface = new GraphicalUserInterface(54, "SkyBlock Menu");
-        gameMenuInterface.addButton(13, new ItemStackBuilder(Material.PLAYER_HEAD).build(), null);
+
     }
 }
