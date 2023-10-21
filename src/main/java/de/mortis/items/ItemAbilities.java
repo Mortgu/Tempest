@@ -2,6 +2,7 @@ package de.mortis.items;
 
 import de.mortis.Main;
 import de.mortis.gui.GraphicalUserInterface;
+import de.mortis.gui.inventories.GameMenuInventory;
 import de.mortis.utilities.ItemStackBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -26,6 +27,8 @@ public enum ItemAbilities {
     OPEN_GAME_MENU() {
         @Override
         public void onTrigger(Player player, PlayerInteractEvent event) {
+            player.openInventory(new GameMenuInventory().getGameMenuInventory());
+
             GraphicalUserInterface graphicalUserInterface = new GraphicalUserInterface(54, "Tempest Menu");
 
             ItemStack itemStack = new ItemStackBuilder(Material.PLAYER_HEAD).setDisplayName(" ").build();

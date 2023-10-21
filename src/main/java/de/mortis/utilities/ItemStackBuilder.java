@@ -28,9 +28,15 @@ public class ItemStackBuilder {
 
     public ItemStackBuilder(Material material) {
         itemStack = new ItemStack(material, 1);
-        this.itemMeta = itemStack.getItemMeta();
+        itemMeta = itemStack.getItemMeta();
 
         this.setItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES);
+
+        if (material == Material.PLAYER_HEAD) {
+            SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
+            skullMeta.setOwningPlayer(player);
+            itemStack.setItemMeta(skullMeta);
+        }
     }
 
     public ItemStackBuilder setOwningPlayer(Player player) {
@@ -41,6 +47,11 @@ public class ItemStackBuilder {
     public ItemStackBuilder disableStackable() {
         PersistentDataContainer persistentDataContainer = itemMeta.getPersistentDataContainer();
         persistentDataContainer.set(new NamespacedKey(plugin, "uid"), PersistentDataType.STRING, UUID.randomUUID().toString());
+        return this;
+    }
+
+    public ItemStackBuilder setTypeOfItem(ItemTypes itemType) {
+        plugin.getCustomItemManager().setTypeOfItem(itemStack, itemType);
         return this;
     }
 
