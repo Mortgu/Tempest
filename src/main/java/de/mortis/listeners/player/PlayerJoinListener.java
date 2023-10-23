@@ -26,6 +26,7 @@ public class PlayerJoinListener implements Listener {
         Inventory playerInventory = player.getInventory();
         ItemStack itemStack = new ItemStackBuilder(Material.NETHER_STAR)
                 .setDisplayName("§aTempest Menu §8(Right Click)")
+                .setSimpleLore("§7View all of your Tempest", "§7progress, including your Skills,", "§7Collections, Recipes and more!")
                 .build();
 
         plugin.getCustomItemManager().setTypeOfItem(itemStack, ItemTypes.MENU_ITEM);

@@ -25,11 +25,14 @@ public class PlayerInteractListener implements Listener {
         ItemTypes itemType = plugin.getCustomItemManager().getTypeOfItem(itemStack);
         ItemAbilities itemAbility = plugin.getCustomItemManager().getItemAbility(itemStack);
 
+        if (itemAbility == null)
+            return;
+
         if (itemType != null) {
             itemType.onInteract(event);
         }
 
-        if (itemAbility != null && event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+        if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             itemAbility.onTrigger(player, event);
         }
     }
