@@ -14,6 +14,9 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -67,6 +70,11 @@ public class ItemStackBuilder {
 
     public ItemStackBuilder setItemFlags(ItemFlag ...flags) {
         this.itemMeta.addItemFlags(flags);
+        return this;
+    }
+
+    public ItemStackBuilder setSimpleLore(String ...lore) {
+        itemMeta.setLore(Arrays.asList(lore));
         return this;
     }
 

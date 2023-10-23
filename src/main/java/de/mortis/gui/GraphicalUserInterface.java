@@ -6,6 +6,7 @@ import de.mortis.utilities.ItemStackBuilder;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -17,6 +18,7 @@ public class GraphicalUserInterface {
 
     private final Inventory inventory;
     private final ItemStack inventoryFillerItem;
+    private Player player;
 
     public GraphicalUserInterface(int size, String inventoryTitle) {
 
@@ -49,6 +51,10 @@ public class GraphicalUserInterface {
     public void addButton(int slotPosition, ItemStack itemStack, Inventory targetInventory) {
         plugin.getCustomItemManager().setTypeOfItem(itemStack, ItemTypes.MENU_ITEM);
         this.inventory.setItem(slotPosition, itemStack);
+    }
+
+    public void openInventory(Player player) {
+        player.openInventory(this.getInventory());
     }
 
     public Inventory build() {
