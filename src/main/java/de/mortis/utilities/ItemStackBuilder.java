@@ -33,7 +33,8 @@ public class ItemStackBuilder {
         itemStack = new ItemStack(material, 1);
         itemMeta = itemStack.getItemMeta();
 
-        this.setItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES);
+        if (itemMeta != null)
+            this.setItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES);
 
         if (material == Material.PLAYER_HEAD) {
             SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();

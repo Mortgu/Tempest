@@ -11,7 +11,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 @Getter
-public class GraphicalUserInterface {
+public abstract class GraphicalUserInterface {
 
     // Create a new instance of the main class
     private final Main plugin = Main.getInstance();
@@ -19,8 +19,10 @@ public class GraphicalUserInterface {
     private final Inventory inventory;
     private final ItemStack inventoryFillerItem;
     private Player player;
+    private final InventoryIdentifiers inventoryIdentifier;
 
-    public GraphicalUserInterface(int size, String inventoryTitle) {
+    public GraphicalUserInterface(int size, String inventoryTitle, InventoryIdentifiers inventoryIdentifier) {
+        this.inventoryIdentifier = inventoryIdentifier;
 
         // Initialize the required inventory.
         inventory = Bukkit.createInventory(null, size, inventoryTitle);
@@ -48,8 +50,8 @@ public class GraphicalUserInterface {
     A button is an item in an inventory that has the ability to open another inventory
     TODO: MAKE "targetInventory" functional!
      */
-    public void addButton(int slotPosition, ItemStack itemStack, Inventory targetInventory) {
-        plugin.getCustomItemManager().setTypeOfItem(itemStack, ItemTypes.MENU_ITEM);
+    public void addButton(int slotPosition, ItemStack itemStack, InventoryIdentifiers targetInventory) {
+        new UserInterfaceButton(itemStack, targetInventory);
         this.inventory.setItem(slotPosition, itemStack);
     }
 

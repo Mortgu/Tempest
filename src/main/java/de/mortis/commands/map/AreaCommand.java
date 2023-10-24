@@ -30,7 +30,7 @@ public class AreaCommand extends PluginCommand {
         new CustomItemManager(plugin).setItemStack(itemStack).setTypeOfItem(ItemTypes.WORLD_ITEM).addItemAttribute(
                         new ItemAttributes(WeaponAttributes.DAMAGE, 20, 50),
                         new ItemAttributes(WeaponAttributes.STRENGTH, 25)
-                ).setItemAbilities(ItemAbilities.FLAME, ItemAbilities.WATER);
+                );
 
         player.getInventory().addItem(itemStack);
         player.sendMessage("> You have created a custom item. Changed PlayerMode to " + plugin.getPlayerStateManager().getPlayerMode(player));

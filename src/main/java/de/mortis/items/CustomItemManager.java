@@ -30,6 +30,7 @@ public class CustomItemManager {
 
     public CustomItemManager(Main plugin) {
         this.typeNamespacedKey = new NamespacedKey(plugin, "item-type");
+
         this.attributesNamespacedKey = new NamespacedKey(plugin, "item-attributes");
 
         this.attributeValueNamespacedKey = new NamespacedKey(plugin, "value");

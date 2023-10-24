@@ -30,7 +30,7 @@ public class PlayerJoinListener implements Listener {
                 .build();
 
         plugin.getCustomItemManager().setTypeOfItem(itemStack, ItemTypes.MENU_ITEM);
-        plugin.getCustomItemManager().setItemStack(itemStack).setItemAbilities(ItemAbilities.OPEN_GAME_MENU);
+        plugin.getCustomItemManager().setItemStack(itemStack).setItemAbilities(ItemAbilities.GAME_MENU);
 
         playerInventory.setItem(8, itemStack);
     }

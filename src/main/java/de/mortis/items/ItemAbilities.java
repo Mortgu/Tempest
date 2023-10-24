@@ -1,25 +1,19 @@
 package de.mortis.items;
 
 import de.mortis.gui.inventories.GameMenuInventory;
+import de.mortis.gui.inventories.PlayerStatsInventory;
 import org.bukkit.entity.Player;
 
 public enum ItemAbilities {
-    FLAME() {
+    TEST_MENU() {
         @Override
         public <T> void onTrigger(Player player, T event) {
-
+            new PlayerStatsInventory().openInventory(player);
         }
     },
-    WATER() {
+    GAME_MENU() {
         @Override
         public <T> void onTrigger(Player player, T event) {
-
-        }
-    },
-    OPEN_GAME_MENU() {
-        @Override
-        public <T> void onTrigger(Player player, T event) {
-            player.sendMessage(event.getClass().toString());
             new GameMenuInventory().openInventory(player);
         }
     };

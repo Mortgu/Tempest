@@ -3,6 +3,8 @@ package de.mortis.listeners.player;
 import de.mortis.Main;
 import de.mortis.items.ItemAbilities;
 import de.mortis.items.ItemTypes;
+import net.md_5.bungee.api.chat.BaseComponent;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,6 +14,10 @@ import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
+
+import java.util.Objects;
 
 public class InventoryClickListener implements Listener {
 
