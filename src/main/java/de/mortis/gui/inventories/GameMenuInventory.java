@@ -34,9 +34,6 @@ public class GameMenuInventory extends GraphicalUserInterface {
     private final ItemStack ServerEvents = new ItemStackBuilder(Material.CLOCK)
             .setDisplayName("§aServer events").build();
 
-    private final ItemStack InventoryClose = new ItemStackBuilder(Material.BARRIER)
-            .setDisplayName("§cClose").build();
-
     public GameMenuInventory() {
         super(54, "Tempest Menu", InventoryIdentifiers.GAME_MENU);
 
@@ -46,6 +43,5 @@ public class GameMenuInventory extends GraphicalUserInterface {
         addButton(22, PlayerLevels, null);
         addButton(23, PlayerQuests, null);
         addButton(24, ServerEvents, null);
-        addButton(49, InventoryClose, null);
     }
 }

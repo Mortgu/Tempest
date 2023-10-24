@@ -18,8 +18,13 @@ public abstract class GraphicalUserInterface {
 
     private final Inventory inventory;
     private final ItemStack inventoryFillerItem;
-    private Player player;
     private final InventoryIdentifiers inventoryIdentifier;
+
+    private final ItemStack closeItem = new ItemStackBuilder(Material.BARRIER)
+            .setDisplayName("§cClose").build();
+
+    private final ItemStack backItem = new ItemStackBuilder(Material.ARROW)
+            .setDisplayName("§aBack").build();
 
     public GraphicalUserInterface(int size, String inventoryTitle, InventoryIdentifiers inventoryIdentifier) {
         this.inventoryIdentifier = inventoryIdentifier;
@@ -44,6 +49,14 @@ public abstract class GraphicalUserInterface {
         for (int i = 0; i < inventory.getSize(); i++) {
             inventory.setItem(i, inventoryFillerItem);
         }
+
+        addButton(49, closeItem, null);
+
+        if (!plugin.getGraphicalUserInterfaceManager().getCurrentlyOpenInventories().isEmpty()) {
+            addButton(48, backItem, null);
+        }
+
+        plugin.getGraphicalUserInterfaceManager().registerInterface(inventoryIdentifier, inventory);
     }
 
     /*
@@ -57,9 +70,7 @@ public abstract class GraphicalUserInterface {
 
     public void openInventory(Player player) {
         player.openInventory(this.getInventory());
-    }
-
-    public Inventory build() {
-        return inventory;
+        plugin.getGraphicalUserInterfaceManager().getCurrentlyOpenInventories().add(inventory);
+        player.sendMessage(String.valueOf(plugin.getGraphicalUserInterfaceManager().getCurrentlyOpenInventories().size()));
     }
 }

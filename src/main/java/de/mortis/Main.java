@@ -1,6 +1,7 @@
 package de.mortis;
 
 import de.mortis.commands.PluginCommand;
+import de.mortis.gui.GraphicalUserInterfaceManager;
 import de.mortis.items.CustomItem;
 import de.mortis.items.CustomItemManager;
 import de.mortis.managers.DatabaseManager;
@@ -24,6 +25,7 @@ public final class Main extends JavaPlugin {
     public CustomItemManager customItemManager;
     public PlayerStateManager playerStateManager;
     public DatabaseManager databaseManager;
+    public GraphicalUserInterfaceManager graphicalUserInterfaceManager;
 
     @Override
     public void onEnable() {
@@ -31,6 +33,7 @@ public final class Main extends JavaPlugin {
         databaseManager = new DatabaseManager(this);
         playerStateManager = new PlayerStateManager(this);
         customItemManager = new CustomItemManager(this);
+        graphicalUserInterfaceManager = new GraphicalUserInterfaceManager(this);
 
         String packageName = getClass().getPackage().getName();
         this.registerListeners(packageName);
