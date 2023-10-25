@@ -1,24 +1,23 @@
 package de.mortis.items.templates.gui;
 
-import de.mortis.gui.InventoryIdentifiers;
 import de.mortis.items.TempestPlugin;
 import de.mortis.items.TempestPluginInfo;
 import de.mortis.items.types.OriginTypes;
 import de.mortis.items.types.gui.GuiTypes;
-import de.mortis.items.types.gui.specifications.ActionTypes;
 import de.mortis.utilities.ItemStackBuilder;
 import lombok.Getter;
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 @Getter
 @TempestPluginInfo(originType = OriginTypes.GUI, guiTypes = GuiTypes.ACTION)
-public class MenuControllerItem extends TempestPlugin {
+public class PlayerStatsItem extends TempestPlugin {
 
-    public MenuControllerItem() {
-        super(new ItemStackBuilder(Material.NETHER_STAR)
-                .setDisplayName("§aTempest Menu §8(Right Click)").build());
-
-        super.addCtAction(ActionTypes.OPEN_INVENTORY, InventoryIdentifiers.GAME_MENU);
+    public PlayerStatsItem() {
+        super(new ItemStackBuilder(Material.PLAYER_HEAD)
+                .setDisplayName("§aYour Tempest Profile")
+                .setSimpleLore("§7View your equipment, stats,", "§7and more!")
+                .build());
 
         super.buildItem();
     }

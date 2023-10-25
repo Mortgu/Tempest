@@ -1,5 +1,5 @@
 package de.mortis.items.types.gui;
 
 public enum GuiTypes {
-    DISPLAY, ACTION;
+    NULL, DISPLAY, ACTION;
 }

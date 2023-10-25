@@ -1,6 +1,7 @@
 package de.mortis.gui;
 
 import de.mortis.Main;
+import de.mortis.items.templates.gui.InventoryFillerItem;
 import de.mortis.utilities.ItemStackBuilder;
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -16,7 +17,6 @@ public abstract class GraphicalUserInterface {
     private final Main plugin = Main.getInstance();
 
     private final Inventory inventory;
-    private final ItemStack inventoryFillerItem;
     private final InventoryIdentifiers inventoryIdentifier;
 
     private final ItemStack closeItem = new ItemStackBuilder(Material.BARRIER)
@@ -36,15 +36,12 @@ public abstract class GraphicalUserInterface {
         Uses the custom ItemStackBuilder class for construction.
         TODO: MAKE THE FUNCTION "setTypeOfItem" functional.
          */
-        inventoryFillerItem = new ItemStackBuilder(Material.BLACK_STAINED_GLASS_PANE)
-               .setDisplayName(" ").build();
+
 
         // Fills in every slot in inventory by default.
         for (int i = 0; i < inventory.getSize(); i++) {
-            inventory.setItem(i, inventoryFillerItem);
+            inventory.setItem(i, new InventoryFillerItem().getItemStack());
         }
-
-        plugin.getGraphicalUserInterfaceManager().registerInterface(inventoryIdentifier, inventory);
     }
 
     /*

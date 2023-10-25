@@ -1,5 +1,5 @@
 package de.mortis.items.types.item;
 
 public enum ItemTypes {
-    COMBAT, MINING, FARMING, FISHING;
+    NULL, COMBAT, MINING, FARMING, FISHING;
 }

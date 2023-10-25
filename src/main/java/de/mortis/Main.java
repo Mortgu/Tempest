@@ -2,6 +2,7 @@ package de.mortis;
 
 import de.mortis.commands.PluginCommand;
 import de.mortis.gui.GraphicalUserInterfaceManager;
+import de.mortis.items.TempestItemManager;
 import de.mortis.managers.DatabaseManager;
 import de.mortis.managers.items.BlueprintManager;
 import de.mortis.managers.PluginManager;
@@ -23,13 +24,15 @@ public final class Main extends JavaPlugin {
     public PlayerStateManager playerStateManager;
     public DatabaseManager databaseManager;
     public GraphicalUserInterfaceManager graphicalUserInterfaceManager;
+    public TempestItemManager tempestItemManager;
 
     @Override
     public void onEnable() {
         instance = this;
         databaseManager = new DatabaseManager(this);
-        playerStateManager = new PlayerStateManager(this);
         graphicalUserInterfaceManager = new GraphicalUserInterfaceManager(this);
+        tempestItemManager = new TempestItemManager();
+        playerStateManager = new PlayerStateManager(this);
 
         String packageName = getClass().getPackage().getName();
         this.registerListeners(packageName);

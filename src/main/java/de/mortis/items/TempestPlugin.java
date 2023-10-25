@@ -1,6 +1,7 @@
 package de.mortis.items;
 
 import de.mortis.Main;
+import de.mortis.gui.InventoryIdentifiers;
 import de.mortis.items.types.OriginTypes;
 import de.mortis.items.types.gui.GuiTypes;
 import de.mortis.items.types.gui.specifications.ActionTypes;
@@ -31,6 +32,7 @@ public abstract class TempestPlugin {
     // Item specifications
     private final PersistentDataContainer persistentDataContainer;
     private final PersistentDataContainer itemSpecificationContainer;
+    private final PersistentDataContainer itemCtActionContainer;
 
     public TempestPlugin(ItemStack itemStack) {
         this.itemStack = itemStack;
@@ -45,6 +47,20 @@ public abstract class TempestPlugin {
 
         itemSpecificationContainer = itemMeta.getPersistentDataContainer()
                 .getAdapterContext().newPersistentDataContainer();
+
+        itemCtActionContainer = itemMeta.getPersistentDataContainer()
+                .getAdapterContext().newPersistentDataContainer();
+
+        itemSpecificationContainer.set(new NamespacedKey(plugin, "origin-type"),
+                PersistentDataType.STRING, tempestPluginInfo.originType().name());
+
+        if (tempestPluginInfo.itemType() != ItemTypes.NULL)
+            itemSpecificationContainer.set(new NamespacedKey(plugin, "type"),
+                    PersistentDataType.STRING, tempestPluginInfo.itemType().name());
+
+        if (tempestPluginInfo.guiTypes() != GuiTypes.NULL)
+            itemSpecificationContainer.set(new NamespacedKey(plugin, "type"),
+                    PersistentDataType.STRING, tempestPluginInfo.guiTypes().name());
     }
 
     public void setOriginType(OriginTypes originType) {
@@ -61,8 +77,10 @@ public abstract class TempestPlugin {
         itemSpecificationContainer.set(new NamespacedKey(plugin, "type"), PersistentDataType.STRING, itemTypes.name());
     }
 
-    public void addCTAction(ActionTypes actionType) {
-
+    public void addCtAction(ActionTypes actionType, InventoryIdentifiers inventoryIdentifiers) {
+        itemCtActionContainer.set(new NamespacedKey(plugin, "action-key"), PersistentDataType.STRING, actionType.name());
+        itemCtActionContainer.set(new NamespacedKey(plugin, "action-value"), PersistentDataType.STRING, inventoryIdentifiers.name());
+        itemSpecificationContainer.set(new NamespacedKey(plugin, "ct-action"), PersistentDataType.TAG_CONTAINER, itemCtActionContainer);
     }
 
     public void buildItem() {
