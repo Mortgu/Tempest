@@ -26,28 +26,5 @@ public class PlayerStatsInventory extends GraphicalUserInterface {
 
     public PlayerStatsInventory() {
         super(54, "Tempest Stats", InventoryIdentifiers.TEST_MENU);
-
-        // PLAYER TITLES ROW
-        addButton(12, new ItemStackBuilder(Material.AIR).build(), null);
-        addButton(21, new ItemStackBuilder(Material.AIR).build(), null);
-        addButton(30, new ItemStackBuilder(Material.AIR).build(), null);
-        addButton(39, new ItemStackBuilder(Material.AIR).build(), null);
-
-        // PLAYER ARMOR ROW
-        addButton(11, new ItemStackBuilder(Material.AIR).build(), null);
-        addButton(20, new ItemStackBuilder(Material.AIR).build(), null);
-        addButton(29, new ItemStackBuilder(Material.AIR).build(), null);
-        addButton(38, new ItemStackBuilder(Material.AIR).build(), null);
-
-        // EQUIPMENT ROW
-        addButton(10, new ItemStackBuilder(Material.AIR).build(), null);
-        addButton(19, new ItemStackBuilder(Material.AIR).build(), null);
-        addButton(28, new ItemStackBuilder(Material.AIR).build(), null);
-        addButton(37, new ItemStackBuilder(Material.AIR).build(), null);
-
-        addButton(15, CombatStats, null);
-        addButton(16, GatheringStats, null);
-        addButton(24, WisdomStats, null);
-        addButton(25, MiscStats, null);
     }
 }

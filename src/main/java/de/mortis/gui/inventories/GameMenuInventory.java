@@ -36,12 +36,5 @@ public class GameMenuInventory extends GraphicalUserInterface {
 
     public GameMenuInventory() {
         super(54, "Tempest Menu", InventoryIdentifiers.GAME_MENU);
-
-        addButton(13, PlayerHead, new PlayerStatsInventory().getInventoryIdentifier());
-        addButton(20, PlayerSkills, null);
-        addButton(21, PlayerCollections, null);
-        addButton(22, PlayerLevels, null);
-        addButton(23, PlayerQuests, null);
-        addButton(24, ServerEvents, null);
     }
 }

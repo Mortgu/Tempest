@@ -2,8 +2,6 @@ package de.mortis;
 
 import de.mortis.commands.PluginCommand;
 import de.mortis.gui.GraphicalUserInterfaceManager;
-import de.mortis.items.CustomItem;
-import de.mortis.items.CustomItemManager;
 import de.mortis.managers.DatabaseManager;
 import de.mortis.managers.items.BlueprintManager;
 import de.mortis.managers.PluginManager;
@@ -22,7 +20,6 @@ public final class Main extends JavaPlugin {
     public static Main instance;
 
     public BlueprintManager blueprintManager;
-    public CustomItemManager customItemManager;
     public PlayerStateManager playerStateManager;
     public DatabaseManager databaseManager;
     public GraphicalUserInterfaceManager graphicalUserInterfaceManager;
@@ -32,13 +29,11 @@ public final class Main extends JavaPlugin {
         instance = this;
         databaseManager = new DatabaseManager(this);
         playerStateManager = new PlayerStateManager(this);
-        customItemManager = new CustomItemManager(this);
         graphicalUserInterfaceManager = new GraphicalUserInterfaceManager(this);
 
         String packageName = getClass().getPackage().getName();
         this.registerListeners(packageName);
         this.registerCommands(packageName);
-        this.registerCustomItems(packageName);
 
         blueprintManager = new BlueprintManager(this);
     }
@@ -70,28 +65,6 @@ public final class Main extends JavaPlugin {
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                      NoSuchMethodException e) {
                 e.printStackTrace();
-            }
-        }
-    }
-
-    private void registerManagers(String packageName) {
-        for (Class<? extends PluginManager> clazz : new Reflections(packageName + ".managers").getSubTypesOf(PluginManager.class)) {
-            try {
-                clazz.getDeclaredConstructor().newInstance();
-            } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
-                     NoSuchMethodException exception) {
-                throw new RuntimeException();
-            }
-        }
-    }
-
-    private void registerCustomItems(String packageName) {
-        for (Class<? extends CustomItem> clazz : new Reflections(packageName + ".items").getSubTypesOf(CustomItem.class)) {
-            try {
-                clazz.getDeclaredConstructor().newInstance();
-            } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
-                     NoSuchMethodException exception) {
-                throw new RuntimeException();
             }
         }
     }

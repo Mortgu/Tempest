@@ -1,7 +1,6 @@
 package de.mortis.utilities;
 
 import de.mortis.Main;
-import de.mortis.items.ItemTypes;
 import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -49,11 +48,6 @@ public class ItemStackBuilder {
     public ItemStackBuilder disableStackable() {
         PersistentDataContainer persistentDataContainer = itemMeta.getPersistentDataContainer();
         persistentDataContainer.set(new NamespacedKey(plugin, "uid"), PersistentDataType.STRING, UUID.randomUUID().toString());
-        return this;
-    }
-
-    public ItemStackBuilder setTypeOfItem(ItemTypes itemType) {
-        plugin.getCustomItemManager().setTypeOfItem(itemStack, itemType);
         return this;
     }
 

@@ -1,6 +1,6 @@
 package de.mortis.items;
 
-import org.bukkit.Material;
+import de.mortis.items.types.OriginTypes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,8 +9,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface PluginItem {
-    String name();
-    ItemTypes itemType();
-    Material material();
+public @interface TempestPluginInfo {
+    OriginTypes originType();
 }
