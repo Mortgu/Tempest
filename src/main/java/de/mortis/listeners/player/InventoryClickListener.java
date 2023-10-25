@@ -2,6 +2,7 @@ package de.mortis.listeners.player;
 
 import de.mortis.Main;
 import de.mortis.items.types.OriginTypes;
+import de.mortis.items.types.gui.specifications.ActionTypes;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -31,6 +32,11 @@ public class InventoryClickListener implements Listener {
 
         if (inventoryAction == InventoryAction.HOTBAR_SWAP && event.getClick() == ClickType.NUMBER_KEY && originType == OriginTypes.GUI)
             event.setCancelled(true);
+
+        ActionTypes actionType = plugin.getTempestItemManager().getActionKeyOfItem(clickedItem);
+        String actionValue = plugin.getTempestItemManager().getActionValueOfItem(clickedItem);
+
+        actionType.onTrigger(player, actionValue);
     }
 
     @EventHandler

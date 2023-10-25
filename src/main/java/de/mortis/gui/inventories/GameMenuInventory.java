@@ -3,6 +3,8 @@ package de.mortis.gui.inventories;
 import de.mortis.gui.GraphicalUserInterface;
 import de.mortis.gui.InventoryIdentifiers;
 import de.mortis.items.templates.gui.PlayerStatsItem;
+import de.mortis.items.templates.gui.TempestCollectionItem;
+import de.mortis.items.templates.gui.TempestLevelingItem;
 import de.mortis.utilities.ItemStackBuilder;
 import lombok.Getter;
 import org.bukkit.Material;
@@ -37,8 +39,8 @@ public class GameMenuInventory extends GraphicalUserInterface {
 
         addButton(13, new PlayerStatsItem().getItemStack());
         addButton(20, PlayerSkills);
-        addButton(21, PlayerCollections);
-        addButton(22, PlayerLevels);
+        addButton(21, new TempestCollectionItem().getItemStack());
+        addButton(22, new TempestLevelingItem().getItemStack());
         addButton(23, PlayerQuests);
         addButton(24, ServerEvents);
     }
