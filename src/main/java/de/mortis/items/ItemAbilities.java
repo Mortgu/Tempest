@@ -1,5 +1,6 @@
 package de.mortis.items;
 
+import de.mortis.Main;
 import de.mortis.gui.inventories.GameMenuInventory;
 import de.mortis.gui.inventories.PlayerStatsInventory;
 import org.bukkit.entity.Player;
@@ -15,6 +16,7 @@ public enum ItemAbilities {
         @Override
         public <T> void onTrigger(Player player, T event) {
             new GameMenuInventory().openInventory(player);
+            Main.getInstance().getGraphicalUserInterfaceManager().getCurrentlyOpenInventories().clear();
         }
     };
 
