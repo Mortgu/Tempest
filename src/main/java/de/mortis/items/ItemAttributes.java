@@ -1,7 +1,7 @@
 package de.mortis.items;
 
-import de.mortis.items.weapons.WeaponAttributes;
-import de.mortis.items.wearables.WearableAttributes;
+import de.mortis.items.usable.weapons.WeaponAttributes;
+import de.mortis.items.usable.wearables.WearableAttributes;
 import lombok.Getter;
 
 @Getter

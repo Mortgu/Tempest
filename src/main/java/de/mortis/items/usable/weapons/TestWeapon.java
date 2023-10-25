@@ -1,4 +1,4 @@
-package de.mortis.items.weapons;
+package de.mortis.items.usable.weapons;
 
 import de.mortis.Main;
 import de.mortis.items.CustomItem;

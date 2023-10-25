@@ -2,10 +2,8 @@ package de.mortis.listeners.player;
 
 import de.mortis.Main;
 import de.mortis.items.ItemTypes;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.inventory.ItemStack;
 

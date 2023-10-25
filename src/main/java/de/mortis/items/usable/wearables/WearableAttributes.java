@@ -1,4 +1,4 @@
-package de.mortis.items.wearables;
+package de.mortis.items.usable.wearables;
 
 public enum WearableAttributes {
     HEALTH, SPEED;

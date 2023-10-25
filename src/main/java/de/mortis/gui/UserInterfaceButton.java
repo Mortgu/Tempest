@@ -4,8 +4,6 @@ import de.mortis.Main;
 import de.mortis.items.ItemAbilities;
 import de.mortis.items.ItemTypes;
 import lombok.Getter;
-import org.bukkit.Bukkit;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 @Getter
