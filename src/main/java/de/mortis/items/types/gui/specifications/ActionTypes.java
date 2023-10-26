@@ -6,10 +6,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public enum ActionTypes {
-    NO_ACTION {
-        @Override
-        public void onTrigger(Player player, String inventoryIdentifier) { }
-    },
     OPEN_INVENTORY {
         @Override
         public void onTrigger(Player player, String inventoryIdentifier) {

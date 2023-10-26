@@ -34,6 +34,7 @@ public class GraphicalUserInterfaceManager extends PluginManager {
         }
 
         player.openInventory(registeredInventories.get(inventoryIdentifier));
+        plugin.getGraphicalUserInterfaceManager().getCurrentlyOpenInventories().add(registeredInventories.get(inventoryIdentifier));
     }
 
     public void registerInterface(String packageName) {

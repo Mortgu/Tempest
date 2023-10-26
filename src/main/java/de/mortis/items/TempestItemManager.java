@@ -23,11 +23,11 @@ public class TempestItemManager {
 
         // TODO: REFACTOR ERROR HANDLING!
         PersistentDataContainer itemSpecificationContainer = meta.getPersistentDataContainer().get(new NamespacedKey(plugin, "item-specifications"), PersistentDataType.TAG_CONTAINER);
-        if (itemSpecificationContainer == null) return ActionTypes.NO_ACTION;
+        if (itemSpecificationContainer == null) return null;
 
         // TODO: REFACTOR ERROR HANDLING!
         PersistentDataContainer actionTypeContainer = itemSpecificationContainer.get(new NamespacedKey(plugin, "ct-action"), PersistentDataType.TAG_CONTAINER);
-        if (actionTypeContainer == null) return ActionTypes.NO_ACTION;
+        if (actionTypeContainer == null) return null;
 
         String actionTypeName = actionTypeContainer.get(new NamespacedKey(plugin, "action-key"), PersistentDataType.STRING);
 
@@ -44,11 +44,11 @@ public class TempestItemManager {
 
         // TODO: REFACTOR ERROR HANDLING!
         PersistentDataContainer itemSpecificationContainer = meta.getPersistentDataContainer().get(new NamespacedKey(plugin, "item-specifications"), PersistentDataType.TAG_CONTAINER);
-        if (itemSpecificationContainer == null) return "NO_VALUE";
+        if (itemSpecificationContainer == null) return null;
 
         // TODO: REFACTOR ERROR HANDLING!
         PersistentDataContainer actionTypeContainer = itemSpecificationContainer.get(new NamespacedKey(plugin, "ct-action"), PersistentDataType.TAG_CONTAINER);
-        if (actionTypeContainer == null) return "NO_VALUE";
+        if (actionTypeContainer == null) return null;
 
         String actionValue = actionTypeContainer.get(new NamespacedKey(plugin, "action-value"), PersistentDataType.STRING);
 

@@ -46,7 +46,6 @@ public abstract class GraphicalUserInterface {
 
         // Sets close button
         inventory.setItem(49, new InventoryCloseItem().getItemStack());
-        inventory.setItem(48, new InventoryBackItem().getItemStack());
     }
 
     /*
