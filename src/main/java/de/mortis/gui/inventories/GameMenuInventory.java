@@ -29,7 +29,7 @@ public class GameMenuInventory extends GraphicalUserInterface {
             .setDisplayName("§aTempest Leveling").build();
 
     private final ItemStack PlayerQuests = new ItemStackBuilder(Material.WRITABLE_BOOK)
-            .setDisplayName("§aCalendar and Events").setSimpleLore("§7View the Tempest Calendar", "§7upcoming events, and event", "§7rewards!", " ", "§7Date: §a27th Autumn 309").build();
+            .setDisplayName("§aCalendar and Events").setSimpleLore("§7View the Tempest Calendar upcoming events, and event rewards! Date: §a27th Autumn 309").build();
 
     private final ItemStack ServerEvents = new ItemStackBuilder(Material.CLOCK)
             .setDisplayName("§aServer events").build();

@@ -18,7 +18,7 @@ public class PlayerStatsItem extends TempestPlugin {
     public PlayerStatsItem() {
         super(new ItemStackBuilder(Material.PLAYER_HEAD)
                 .setDisplayName("§aYour Tempest Profile")
-                .setSimpleLore("§7View your equipment, stats,", "§7and more!")
+                .setSimpleLore("§7View your equipment, stats, and more!")
                 .build());
 
         super.addCtAction(ActionTypes.OPEN_INVENTORY, InventoryIdentifiers.TEST_MENU);

@@ -66,9 +66,17 @@ public class ItemStackBuilder {
         return this;
     }
 
-    public ItemStackBuilder setSimpleLore(String ...lore) {
-        itemMeta.setLore(Arrays.asList(lore));
+    // TODO: CHECK LINE LENGTH & SET DEFAULT COLOR TO §7
+    public ItemStackBuilder setSimpleLore(String lore) {
+        itemMeta.setLore(MessageHandler.lorifyString(lore));
         return this;
+    }
+
+    public void addSimpleLore(ItemStack itemStack, String ...lore) {
+        ItemMeta meta = itemStack.getItemMeta();
+
+        if (meta == null) return;
+        meta.setLore(Arrays.asList(lore));
     }
 
     public @NotNull ItemStack build() {

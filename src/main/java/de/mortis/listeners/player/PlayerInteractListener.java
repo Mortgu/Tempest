@@ -25,7 +25,8 @@ public class PlayerInteractListener implements Listener {
         ActionTypes actionType = plugin.getTempestItemManager().getActionKeyOfItem(itemStack);
         String actionValue = plugin.getTempestItemManager().getActionValueOfItem(itemStack);
 
-        if (actionType != null && action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK){
+        if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK){
+            if (actionType == null) return;
             actionType.onTrigger(player, actionValue);
         }
     }
