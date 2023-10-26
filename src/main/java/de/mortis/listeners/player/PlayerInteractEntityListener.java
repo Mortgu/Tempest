@@ -10,6 +10,5 @@ public class PlayerInteractEntityListener implements Listener {
     @EventHandler
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
         Player player = event.getPlayer();
-        player.sendMessage(event.getRightClicked().getName());
     }
 }

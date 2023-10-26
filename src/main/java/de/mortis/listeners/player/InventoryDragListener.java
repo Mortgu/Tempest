@@ -1,11 +1,11 @@
 package de.mortis.listeners.player;
 
 import de.mortis.Main;
-import de.mortis.items.ItemTypes;
+import de.mortis.items.types.OriginTypes;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryDragEvent;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -16,14 +16,7 @@ public class InventoryDragListener implements Listener {
     public void onInventoryDrag(InventoryMoveItemEvent event) {
         ItemStack itemStack = event.getItem();
 
-        if (itemStack == null)
-            return;
-
-        ItemTypes itemType = plugin.getCustomItemManager().getTypeOfItem(itemStack);
-
-        if (itemType != null) {
-            itemType.onInventoryDrag(event);
-        }
+        OriginTypes originType = OriginTypes.valueOf(plugin.getTempestItemManager().getItemOriginType(itemStack));
+        if (originType == OriginTypes.GUI) event.setCancelled(true);
     }
-
 }

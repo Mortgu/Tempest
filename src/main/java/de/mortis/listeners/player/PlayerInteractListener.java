@@ -1,8 +1,7 @@
 package de.mortis.listeners.player;
 
 import de.mortis.Main;
-import de.mortis.items.ItemAbilities;
-import de.mortis.items.ItemTypes;
+import de.mortis.items.types.gui.specifications.ActionTypes;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,22 +17,17 @@ public class PlayerInteractListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         ItemStack itemStack = event.getItem();
+        Action action = event.getAction();
 
         if (itemStack == null)
             return;
 
-        ItemTypes itemType = plugin.getCustomItemManager().getTypeOfItem(itemStack);
-        ItemAbilities itemAbility = plugin.getCustomItemManager().getItemAbility(itemStack);
+        ActionTypes actionType = plugin.getTempestItemManager().getActionKeyOfItem(itemStack);
+        String actionValue = plugin.getTempestItemManager().getActionValueOfItem(itemStack);
 
-        if (itemAbility == null)
-            return;
-
-        if (itemType != null) {
-            itemType.onInteract(event);
-        }
-
-        if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            itemAbility.onTrigger(player, event);
+        if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK){
+            if (actionType == null) return;
+            actionType.onTrigger(player, actionValue);
         }
     }
 }

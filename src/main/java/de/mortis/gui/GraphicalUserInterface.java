@@ -1,7 +1,9 @@
 package de.mortis.gui;
 
 import de.mortis.Main;
-import de.mortis.items.ItemTypes;
+import de.mortis.items.templates.gui.InventoryBackItem;
+import de.mortis.items.templates.gui.InventoryCloseItem;
+import de.mortis.items.templates.gui.InventoryFillerItem;
 import de.mortis.utilities.ItemStackBuilder;
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -17,7 +19,6 @@ public abstract class GraphicalUserInterface {
     private final Main plugin = Main.getInstance();
 
     private final Inventory inventory;
-    private final ItemStack inventoryFillerItem;
     private final InventoryIdentifiers inventoryIdentifier;
 
     private final ItemStack closeItem = new ItemStackBuilder(Material.BARRIER)
@@ -37,34 +38,22 @@ public abstract class GraphicalUserInterface {
         Uses the custom ItemStackBuilder class for construction.
         TODO: MAKE THE FUNCTION "setTypeOfItem" functional.
          */
-        inventoryFillerItem = new ItemStackBuilder(Material.BLACK_STAINED_GLASS_PANE)
-                .setDisplayName(" ").setTypeOfItem(ItemTypes.MENU_ITEM).build();
-
-        /*
-        Make so that the filler item can't be moved by the player
-         */
-        plugin.getCustomItemManager().setTypeOfItem(inventoryFillerItem, ItemTypes.MENU_ITEM);
 
         // Fills in every slot in inventory by default.
         for (int i = 0; i < inventory.getSize(); i++) {
-            inventory.setItem(i, inventoryFillerItem);
+            inventory.setItem(i, new InventoryFillerItem().getItemStack());
         }
 
-        addButton(49, closeItem, null);
-
-        if (!plugin.getGraphicalUserInterfaceManager().getCurrentlyOpenInventories().isEmpty()) {
-            addButton(48, backItem, null);
-        }
-
-        plugin.getGraphicalUserInterfaceManager().registerInterface(inventoryIdentifier, inventory);
+        // Sets close button
+        inventory.setItem(49, new InventoryCloseItem().getItemStack());
+        inventory.setItem(48, new InventoryBackItem().getItemStack());
     }
 
     /*
     A button is an item in an inventory that has the ability to open another inventory
     TODO: MAKE "targetInventory" functional!
      */
-    public void addButton(int slotPosition, ItemStack itemStack, InventoryIdentifiers targetInventory) {
-        new UserInterfaceButton(itemStack, targetInventory);
+    public void addButton(int slotPosition, ItemStack itemStack) {
         this.inventory.setItem(slotPosition, itemStack);
     }
 

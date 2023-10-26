@@ -1,21 +1,19 @@
 package de.mortis.listeners.player;
 
 import de.mortis.Main;
-import de.mortis.items.ItemAbilities;
-import de.mortis.items.ItemTypes;
-import net.md_5.bungee.api.chat.BaseComponent;
-import org.bukkit.NamespacedKey;
+import de.mortis.items.types.OriginTypes;
+import de.mortis.items.types.gui.GuiTypes;
+import de.mortis.items.types.gui.specifications.ActionTypes;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.inventory.*;
-import org.bukkit.inventory.Inventory;
+import org.bukkit.event.inventory.ClickType;
+import org.bukkit.event.inventory.InventoryAction;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
-
-import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
 public class InventoryClickListener implements Listener {
 
@@ -25,28 +23,29 @@ public class InventoryClickListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         ItemStack clickedItem = event.getCurrentItem();
+        @NotNull InventoryAction inventoryAction = event.getAction();
 
         if (clickedItem == null)
             return;
 
-        ItemTypes itemType = plugin.getCustomItemManager().getTypeOfItem(clickedItem);
-        ItemAbilities itemAbility = plugin.getCustomItemManager().getItemAbility(clickedItem);
+        OriginTypes originType = OriginTypes.valueOf(plugin.getTempestItemManager().getItemOriginType(clickedItem));
+        if (originType == OriginTypes.GUI) event.setCancelled(true);
 
-        if (event.getAction() == InventoryAction.HOTBAR_SWAP && event.getClick() == ClickType.NUMBER_KEY) {
+        if (inventoryAction == InventoryAction.HOTBAR_SWAP && event.getClick() == ClickType.NUMBER_KEY && originType == OriginTypes.GUI)
             event.setCancelled(true);
-        }
 
-        if (itemType != null) {
-            itemType.onInventoryClick(event);
-        }
+        ActionTypes actionType = plugin.getTempestItemManager().getActionKeyOfItem(clickedItem);
+        String actionValue = plugin.getTempestItemManager().getActionValueOfItem(clickedItem);
 
-        if (itemAbility != null) {
-            itemAbility.onTrigger(player, event);
+        if (actionType != null && actionValue != null) {
+            actionType.onTrigger(player, actionValue);
+
+            GuiTypes guiTypes = GuiTypes.valueOf(plugin.getTempestItemManager().getItemType(clickedItem));
+
+            player.sendMessage("§3Programmers-Utilities > §bItem originType > §7" + guiTypes);
         }
     }
 
     @EventHandler
-    public void onCreativeInventoryClick(InventoryCloseEvent event) {
-        event.getPlayer().sendMessage(event.getPlayer().getOpenInventory().getType().toString());
-    }
+    public void onCreativeInventoryClick(InventoryCloseEvent event) {}
 }
