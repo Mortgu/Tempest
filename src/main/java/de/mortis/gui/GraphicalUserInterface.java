@@ -1,6 +1,8 @@
 package de.mortis.gui;
 
 import de.mortis.Main;
+import de.mortis.items.templates.gui.InventoryBackItem;
+import de.mortis.items.templates.gui.InventoryCloseItem;
 import de.mortis.items.templates.gui.InventoryFillerItem;
 import de.mortis.utilities.ItemStackBuilder;
 import lombok.Getter;
@@ -37,11 +39,14 @@ public abstract class GraphicalUserInterface {
         TODO: MAKE THE FUNCTION "setTypeOfItem" functional.
          */
 
-
         // Fills in every slot in inventory by default.
         for (int i = 0; i < inventory.getSize(); i++) {
             inventory.setItem(i, new InventoryFillerItem().getItemStack());
         }
+
+        // Sets close button
+        inventory.setItem(49, new InventoryCloseItem().getItemStack());
+        inventory.setItem(48, new InventoryBackItem().getItemStack());
     }
 
     /*

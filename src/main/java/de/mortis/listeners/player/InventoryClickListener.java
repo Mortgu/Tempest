@@ -2,6 +2,7 @@ package de.mortis.listeners.player;
 
 import de.mortis.Main;
 import de.mortis.items.types.OriginTypes;
+import de.mortis.items.types.gui.GuiTypes;
 import de.mortis.items.types.gui.specifications.ActionTypes;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,12 +37,15 @@ public class InventoryClickListener implements Listener {
         ActionTypes actionType = plugin.getTempestItemManager().getActionKeyOfItem(clickedItem);
         String actionValue = plugin.getTempestItemManager().getActionValueOfItem(clickedItem);
 
-        if (actionType != null && actionValue != null)
+        if (actionType != null && actionValue != null) {
             actionType.onTrigger(player, actionValue);
+
+            GuiTypes guiTypes = GuiTypes.valueOf(plugin.getTempestItemManager().getItemType(clickedItem));
+
+            player.sendMessage("§3Programmers-Utilities > §bItem originType > §7" + guiTypes);
+        }
     }
 
     @EventHandler
-    public void onCreativeInventoryClick(InventoryCloseEvent event) {
-        event.getPlayer().sendMessage(event.getPlayer().getOpenInventory().getType().toString());
-    }
+    public void onCreativeInventoryClick(InventoryCloseEvent event) {}
 }

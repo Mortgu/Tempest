@@ -2,6 +2,7 @@ package de.mortis.items;
 
 import de.mortis.Main;
 import de.mortis.items.types.OriginTypes;
+import de.mortis.items.types.gui.GuiTypes;
 import de.mortis.items.types.gui.specifications.ActionTypes;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -73,5 +74,23 @@ public class TempestItemManager {
             return OriginTypes.ITEM.name();
 
         return originTypeContainer;
+    }
+
+    public String getItemType(ItemStack itemStack) {
+        ItemMeta meta = itemStack.getItemMeta();
+
+        if (meta == null) return GuiTypes.DISPLAY.name();
+
+        PersistentDataContainer itemSpecificationContainer = meta.getPersistentDataContainer().get(new NamespacedKey(plugin, "item-specifications"), PersistentDataType.TAG_CONTAINER);
+
+        if (itemSpecificationContainer == null)
+            return GuiTypes.DISPLAY.name();
+
+        String typeContainer = itemSpecificationContainer.get(new NamespacedKey(plugin, "type"), PersistentDataType.STRING);
+
+        if (typeContainer == null)
+            return GuiTypes.DISPLAY.name();
+
+        return typeContainer;
     }
 }

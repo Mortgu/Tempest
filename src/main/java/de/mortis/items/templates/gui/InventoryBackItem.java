@@ -10,11 +10,11 @@ import org.bukkit.Material;
 
 @Getter
 @TempestPluginInfo(originType = OriginTypes.GUI, guiTypes = GuiTypes.ACTION)
-public class TempestCollectionItem extends TempestPlugin {
+public class InventoryBackItem extends TempestPlugin {
 
-    public TempestCollectionItem() {
-        super(new ItemStackBuilder(Material.ITEM_FRAME)
-                .setDisplayName("§aCollection").build());
+    public InventoryBackItem() {
+        super(new ItemStackBuilder(Material.ARROW)
+                .setDisplayName("§eBack").build());
 
         super.buildItem();
     }

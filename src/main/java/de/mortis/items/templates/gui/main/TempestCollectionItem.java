@@ -1,4 +1,4 @@
-package de.mortis.items.templates.gui;
+package de.mortis.items.templates.gui.main;
 
 import de.mortis.items.TempestPlugin;
 import de.mortis.items.TempestPluginInfo;
@@ -10,11 +10,11 @@ import org.bukkit.Material;
 
 @Getter
 @TempestPluginInfo(originType = OriginTypes.GUI, guiTypes = GuiTypes.ACTION)
-public class TempestLevelingItem extends TempestPlugin {
+public class TempestCollectionItem extends TempestPlugin {
 
-    public TempestLevelingItem() {
-        super(new ItemStackBuilder(Material.EMERALD)
-                .setDisplayName("§aTempest Leveling").build());
+    public TempestCollectionItem() {
+        super(new ItemStackBuilder(Material.ITEM_FRAME)
+                .setDisplayName("§aCollection").build());
 
         super.buildItem();
     }

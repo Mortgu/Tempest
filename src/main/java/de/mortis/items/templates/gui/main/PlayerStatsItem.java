@@ -1,4 +1,4 @@
-package de.mortis.items.templates.gui;
+package de.mortis.items.templates.gui.main;
 
 import de.mortis.gui.InventoryIdentifiers;
 import de.mortis.items.TempestPlugin;
