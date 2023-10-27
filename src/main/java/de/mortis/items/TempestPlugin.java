@@ -9,6 +9,7 @@ import de.mortis.items.types.item.ItemTypes;
 import de.mortis.utilities.ItemStackBuilder;
 import lombok.Getter;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -30,6 +31,8 @@ public abstract class TempestPlugin {
 
     private final ItemStack itemStack;
     private ItemMeta itemMeta;
+
+    private Player player;
 
     // Item specifications
     private final PersistentDataContainer persistentDataContainer;

@@ -33,15 +33,13 @@ public class ItemStackBuilder {
         if (itemMeta != null)
             this.setItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES);
 
-        if (material == Material.PLAYER_HEAD) {
-            SkullMeta skullMeta = (SkullMeta) itemStack.getItemMeta();
-            skullMeta.setOwningPlayer(player);
-            itemStack.setItemMeta(skullMeta);
-        }
+
     }
 
     public ItemStackBuilder setOwningPlayer(Player player) {
-        this.player = player;
+        SkullMeta skullMeta = (SkullMeta) itemMeta;
+        skullMeta.setOwningPlayer(player);
+        itemStack.setItemMeta(skullMeta);
         return this;
     }
 
@@ -61,7 +59,7 @@ public class ItemStackBuilder {
         return this;
     }
 
-    public ItemStackBuilder setItemFlags(ItemFlag ...flags) {
+    public ItemStackBuilder setItemFlags(ItemFlag... flags) {
         this.itemMeta.addItemFlags(flags);
         return this;
     }
@@ -72,7 +70,7 @@ public class ItemStackBuilder {
         return this;
     }
 
-    public void addSimpleLore(ItemStack itemStack, String ...lore) {
+    public void addSimpleLore(ItemStack itemStack, String... lore) {
         ItemMeta meta = itemStack.getItemMeta();
 
         if (meta == null) return;

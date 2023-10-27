@@ -25,24 +25,26 @@ public class InventoryClickListener implements Listener {
         ItemStack clickedItem = event.getCurrentItem();
         @NotNull InventoryAction inventoryAction = event.getAction();
 
-        if (clickedItem == null)
+        if (clickedItem == null) {
+            event.setCancelled(true);
             return;
+        }
 
         OriginTypes originType = OriginTypes.valueOf(plugin.getTempestItemManager().getItemOriginType(clickedItem));
-        if (originType == OriginTypes.GUI) event.setCancelled(true);
 
-        if (inventoryAction == InventoryAction.HOTBAR_SWAP && event.getClick() == ClickType.NUMBER_KEY && originType == OriginTypes.GUI)
+        if (inventoryAction.equals(InventoryAction.HOTBAR_SWAP) ||
+                event.getClick().equals(ClickType.NUMBER_KEY) ||
+                originType.equals(OriginTypes.GUI)) {
             event.setCancelled(true);
+            player.updateInventory();
+        }
 
         ActionTypes actionType = plugin.getTempestItemManager().getActionKeyOfItem(clickedItem);
         String actionValue = plugin.getTempestItemManager().getActionValueOfItem(clickedItem);
 
         if (actionType != null && actionValue != null) {
             actionType.onTrigger(player, actionValue);
-
             GuiTypes guiTypes = GuiTypes.valueOf(plugin.getTempestItemManager().getItemType(clickedItem));
-
-            player.sendMessage("§3Programmers-Utilities > §bItem originType > §7" + guiTypes);
         }
     }
 

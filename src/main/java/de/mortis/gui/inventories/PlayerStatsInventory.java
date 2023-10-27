@@ -2,6 +2,7 @@ package de.mortis.gui.inventories;
 
 import de.mortis.gui.GraphicalUserInterface;
 import de.mortis.gui.InventoryIdentifiers;
+import de.mortis.items.templates.gui.InventoryBackItem;
 import de.mortis.items.templates.gui.stats.CombatStatItem;
 import de.mortis.utilities.ItemStackBuilder;
 import org.bukkit.Material;
@@ -33,5 +34,8 @@ public class PlayerStatsInventory extends GraphicalUserInterface {
         addButton(16, new ItemStackBuilder(Material.AIR).build());
         addButton(24, new ItemStackBuilder(Material.AIR).build());
         addButton(25, new ItemStackBuilder(Material.AIR).build());
+
+
+        addButton(48, new InventoryBackItem().getItemStack());
     }
 }

@@ -7,8 +7,11 @@ import de.mortis.items.templates.gui.InventoryFillerItem;
 import de.mortis.items.templates.gui.main.*;
 import de.mortis.utilities.ItemStackBuilder;
 import lombok.Getter;
+import net.kyori.adventure.identity.Identity;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 
 @Getter
 public class GameMenuInventory extends GraphicalUserInterface {
@@ -19,11 +22,18 @@ public class GameMenuInventory extends GraphicalUserInterface {
     public GameMenuInventory() {
         super(54, "Tempest Menu", InventoryIdentifiers.GAME_MENU);
 
-        addButton(13, new PlayerStatsItem().getItemStack());
+        addButton(13, new PlayerStatsItem(player).getItemStack());
         addButton(20, new SkillTreeItem().getItemStack());
         addButton(21, new TempestCollectionItem().getItemStack());
         addButton(22, new TempestLevelingItem().getItemStack());
         addButton(23, new QuestsItem().getItemStack());
         addButton(24, new CalendarEventsItem().getItemStack());
+    }
+
+    @Override
+    public void openInventory(Player player, Inventory inventory) {
+        this.player = player;
+        player.sendMessage("open");
+        super.openInventory(player, inventory);
     }
 }

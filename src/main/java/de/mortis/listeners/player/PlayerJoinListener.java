@@ -1,6 +1,7 @@
 package de.mortis.listeners.player;
 
 import de.mortis.Main;
+import de.mortis.items.templates.gui.MenuControllerItem;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,5 +17,7 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
         event.setJoinMessage(null);
         player.setGameMode(GameMode.SURVIVAL);
+
+        player.getInventory().setItem(8, new MenuControllerItem().getItemStack());
     }
 }

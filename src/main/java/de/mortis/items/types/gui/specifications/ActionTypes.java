@@ -10,7 +10,7 @@ public enum ActionTypes {
         @Override
         public void onTrigger(Player player, String inventoryIdentifier) {
             Main.getInstance().getGraphicalUserInterfaceManager()
-                    .openGraphicalUserInterfaceByIdentifier(player, InventoryIdentifiers.valueOf(inventoryIdentifier));
+                    .openByIdentifier(player, InventoryIdentifiers.valueOf(inventoryIdentifier));
         }
     };
 

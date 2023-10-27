@@ -56,9 +56,7 @@ public abstract class GraphicalUserInterface {
         this.inventory.setItem(slotPosition, itemStack);
     }
 
-    public void openInventory(Player player) {
-        player.openInventory(this.getInventory());
-        plugin.getGraphicalUserInterfaceManager().getCurrentlyOpenInventories().add(inventory);
-        player.sendMessage(String.valueOf(plugin.getGraphicalUserInterfaceManager().getCurrentlyOpenInventories().size()));
+    public void openInventory(Player player, Inventory inventory) {
+        player.openInventory(inventory);
     }
 }

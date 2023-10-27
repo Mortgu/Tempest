@@ -9,16 +9,18 @@ import de.mortis.items.types.gui.specifications.ActionTypes;
 import de.mortis.utilities.ItemStackBuilder;
 import lombok.Getter;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 @Getter
 @TempestPluginInfo(originType = OriginTypes.GUI, guiTypes = GuiTypes.ACTION)
 public class PlayerStatsItem extends TempestPlugin {
 
-    public PlayerStatsItem() {
+    public PlayerStatsItem(Player player) {
         super(new ItemStackBuilder(Material.PLAYER_HEAD)
                 .setDisplayName("§aYour Tempest Profile")
                 .setSimpleLore("§7View your equipment, stats, and more!")
+                .setOwningPlayer(player)
                 .build());
 
         super.addCtAction(ActionTypes.OPEN_INVENTORY, InventoryIdentifiers.TEST_MENU);
