@@ -15,6 +15,8 @@ public class BlockBreakListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
+        player.updateInventory();
+
         ItemStack itemStack = player.getItemInHand();
 
         OriginTypes originTypes = OriginTypes.valueOf(plugin.getTempestItemManager().getItemOriginType(itemStack));

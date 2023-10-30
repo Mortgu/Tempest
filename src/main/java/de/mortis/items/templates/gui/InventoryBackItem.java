@@ -1,8 +1,8 @@
 package de.mortis.items.templates.gui;
 
 import de.mortis.gui.InventoryIdentifiers;
-import de.mortis.items.TempestPlugin;
-import de.mortis.items.TempestPluginInfo;
+import de.mortis.items.TempestItem;
+import de.mortis.items.TempestItemInfo;
 import de.mortis.items.types.OriginTypes;
 import de.mortis.items.types.gui.GuiTypes;
 import de.mortis.items.types.gui.specifications.ActionTypes;
@@ -11,8 +11,8 @@ import lombok.Getter;
 import org.bukkit.Material;
 
 @Getter
-@TempestPluginInfo(originType = OriginTypes.GUI, guiTypes = GuiTypes.ACTION)
-public class InventoryBackItem extends TempestPlugin {
+@TempestItemInfo(originType = OriginTypes.GUI, guiTypes = GuiTypes.ACTION)
+public class InventoryBackItem extends TempestItem {
 
     public InventoryBackItem() {
         super(new ItemStackBuilder(Material.ARROW)

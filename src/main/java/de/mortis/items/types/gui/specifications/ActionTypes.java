@@ -12,7 +12,14 @@ public enum ActionTypes {
             Main.getInstance().getGraphicalUserInterfaceManager()
                     .openByIdentifier(player, InventoryIdentifiers.valueOf(inventoryIdentifier));
         }
-    };
+    },
+    CLOSE_INVENTORY {
+        @Override
+        public void onTrigger(Player player, String inventoryIdentifier) {
+            player.closeInventory();
+        }
+    }
+    ;
 
     public abstract void onTrigger(Player player, String inventoryIdentifier);
 }

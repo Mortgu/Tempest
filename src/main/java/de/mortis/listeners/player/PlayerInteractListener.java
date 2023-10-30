@@ -2,6 +2,7 @@ package de.mortis.listeners.player;
 
 import de.mortis.Main;
 import de.mortis.items.types.gui.specifications.ActionTypes;
+import de.mortis.utilities.MousePatternDetector;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,9 +10,15 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class PlayerInteractListener implements Listener {
 
     private final Main plugin = Main.getInstance();
+
+    private final HashMap<Integer, Long> registeredClicks = new HashMap<>();
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -31,6 +38,7 @@ public class PlayerInteractListener implements Listener {
                 action == Action.LEFT_CLICK_BLOCK) {
             if (actionType == null) return;
             actionType.onTrigger(player, actionValue);
+            player.sendMessage(action.name());
         }
     }
 }

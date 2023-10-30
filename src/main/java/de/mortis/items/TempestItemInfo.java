@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface TempestPluginInfo {
+public @interface TempestItemInfo {
     OriginTypes originType();
     ItemTypes itemType() default ItemTypes.NULL;
     GuiTypes guiTypes() default GuiTypes.NULL;

@@ -42,7 +42,7 @@ public class InventoryClickListener implements Listener {
         ActionTypes actionType = plugin.getTempestItemManager().getActionKeyOfItem(clickedItem);
         String actionValue = plugin.getTempestItemManager().getActionValueOfItem(clickedItem);
 
-        if (actionType != null && actionValue != null) {
+        if (actionType != null) {
             actionType.onTrigger(player, actionValue);
             GuiTypes guiTypes = GuiTypes.valueOf(plugin.getTempestItemManager().getItemType(clickedItem));
         }
