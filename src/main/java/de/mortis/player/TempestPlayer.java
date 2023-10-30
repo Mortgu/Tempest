@@ -26,7 +26,7 @@ public class TempestPlayer {
         this.name = player.getName();
 
         Bukkit.getScheduler().runTaskTimer(plugin, () -> {
-            player.sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§c❤10/10     §7300 §fW §7-1500     §b☀100/100"));
+            player.sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§c10❤10     §7300 §fW §7-1500     §b100☀100"));
         }, 5L, 5L);
     }
 
