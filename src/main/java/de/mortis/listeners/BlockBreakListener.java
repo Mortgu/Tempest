@@ -1,7 +1,7 @@
 package de.mortis.listeners;
 
 import de.mortis.Main;
-import de.mortis.items.types.OriginTypes;
+import de.mortis.items.types.ItemOriginTypes;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,7 +19,7 @@ public class BlockBreakListener implements Listener {
 
         ItemStack itemStack = player.getItemInHand();
 
-        OriginTypes originTypes = OriginTypes.valueOf(plugin.getTempestItemManager().getItemOriginType(itemStack));
-        if (originTypes.equals(OriginTypes.GUI)) event.setCancelled(true);
+        ItemOriginTypes originTypes = ItemOriginTypes.valueOf(plugin.getTempestItemManager().getItemOriginType(itemStack));
+        if (originTypes.equals(ItemOriginTypes.GUI)) event.setCancelled(true);
     }
 }

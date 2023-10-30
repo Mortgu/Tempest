@@ -1,0 +1,5 @@
+package de.mortis.items.types;
+
+public enum AbilityActionTypes {
+    RIGHT_RIGHT_RIGHT, RIGHT_RIGHT_LEFT, RIGHT_LEFT_LEFT, LEFT_LEFT_LEFT, RIGHT_LEFT_RIGHT, LEFT_RIGHT_LEFT, LEFT_LEFT_RIGHT, LEFT_RIGHT_RIGHT;
+}
