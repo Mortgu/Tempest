@@ -18,8 +18,7 @@ public enum ActionTypes {
         public void onTrigger(Player player, String inventoryIdentifier) {
             player.closeInventory();
         }
-    }
-    ;
+    };
 
     public abstract void onTrigger(Player player, String inventoryIdentifier);
 }

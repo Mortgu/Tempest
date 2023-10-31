@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 public class PlayerStatsInventory extends GraphicalUserInterface {
 
     public PlayerStatsInventory() {
-        super(54, "Tempest Stats", InventoryIdentifiers.TEST_MENU);
+        super(54, "Tempest Stats", InventoryIdentifiers.STATS_INVENTORY);
 
         addButton(12, new ItemStackBuilder(Material.AIR).build());
         addButton(21, new ItemStackBuilder(Material.AIR).build());

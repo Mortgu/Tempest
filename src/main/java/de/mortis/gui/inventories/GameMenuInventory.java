@@ -33,7 +33,6 @@ public class GameMenuInventory extends GraphicalUserInterface {
     @Override
     public void openInventory(Player player, Inventory inventory) {
         this.player = player;
-        player.sendMessage("open");
         super.openInventory(player, inventory);
     }
 }

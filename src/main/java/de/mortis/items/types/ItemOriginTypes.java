@@ -1,5 +1,5 @@
 package de.mortis.items.types;
 
-public enum OriginTypes {
+public enum ItemOriginTypes {
     GUI, ITEM;
 }

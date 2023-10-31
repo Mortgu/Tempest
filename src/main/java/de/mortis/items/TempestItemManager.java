@@ -1,7 +1,7 @@
 package de.mortis.items;
 
 import de.mortis.Main;
-import de.mortis.items.types.OriginTypes;
+import de.mortis.items.types.ItemOriginTypes;
 import de.mortis.items.types.gui.GuiTypes;
 import de.mortis.items.types.gui.specifications.ActionTypes;
 import org.bukkit.NamespacedKey;
@@ -61,17 +61,17 @@ public class TempestItemManager {
     public String getItemOriginType(ItemStack itemStack) {
         ItemMeta meta = itemStack.getItemMeta();
 
-        if (meta == null) return OriginTypes.ITEM.name();
+        if (meta == null) return ItemOriginTypes.ITEM.name();
 
         PersistentDataContainer itemSpecificationContainer = meta.getPersistentDataContainer().get(new NamespacedKey(plugin, "item-specifications"), PersistentDataType.TAG_CONTAINER);
 
         if (itemSpecificationContainer == null)
-            return OriginTypes.ITEM.name();
+            return ItemOriginTypes.ITEM.name();
 
         String originTypeContainer = itemSpecificationContainer.get(new NamespacedKey(plugin, "origin-type"), PersistentDataType.STRING);
 
         if (originTypeContainer == null)
-            return OriginTypes.ITEM.name();
+            return ItemOriginTypes.ITEM.name();
 
         return originTypeContainer;
     }
