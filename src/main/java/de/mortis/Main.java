@@ -1,5 +1,6 @@
 package de.mortis;
 
+import de.mortis.blueprint.BlueprintManager;
 import de.mortis.commands.PluginCommand;
 import de.mortis.configuration.TempestConfiguration;
 import de.mortis.gui.GraphicalUserInterfaceManager;
@@ -21,12 +22,14 @@ public final class Main extends JavaPlugin {
     public PlayerStateManager playerStateManager;
     public GraphicalUserInterfaceManager graphicalUserInterfaceManager;
     public TempestItemManager tempestItemManager;
+    private BlueprintManager blueprintManager;
 
     private TempestConfiguration mainConfiguration;
 
     @Override
     public void onEnable() {
         instance = this;
+        blueprintManager = new BlueprintManager();
         graphicalUserInterfaceManager = new GraphicalUserInterfaceManager();
         tempestItemManager = new TempestItemManager();
         playerStateManager = new PlayerStateManager(this);

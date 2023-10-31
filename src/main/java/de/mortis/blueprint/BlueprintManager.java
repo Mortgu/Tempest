@@ -2,11 +2,11 @@ package de.mortis.blueprint;
 
 import de.mortis.Main;
 import de.mortis.configuration.TempestConfiguration;
+import lombok.Getter;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class BlueprintManager {
 
@@ -15,6 +15,7 @@ public class BlueprintManager {
     private final File blueprintFolder;
     private TempestConfiguration tempestConfiguration;
 
+    @Getter
     private ArrayList<File> registeredBlueprints;
 
     private String unnamedBlueprintName = "unnamed.blueprint";
