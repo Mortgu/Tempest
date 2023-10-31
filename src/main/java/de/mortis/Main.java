@@ -1,10 +1,9 @@
 package de.mortis;
 
 import de.mortis.commands.PluginCommand;
+import de.mortis.configuration.TempestConfiguration;
 import de.mortis.gui.GraphicalUserInterfaceManager;
 import de.mortis.items.TempestItemManager;
-import de.mortis.managers.database.DatabaseManager;
-import de.mortis.managers.items.BlueprintManager;
 import de.mortis.player.PlayerStateManager;
 import lombok.Getter;
 import org.bukkit.event.Listener;
@@ -19,17 +18,16 @@ public final class Main extends JavaPlugin {
     @Getter
     public static Main instance;
 
-    public BlueprintManager blueprintManager;
     public PlayerStateManager playerStateManager;
-    public DatabaseManager databaseManager;
     public GraphicalUserInterfaceManager graphicalUserInterfaceManager;
     public TempestItemManager tempestItemManager;
+
+    private TempestConfiguration mainConfiguration;
 
     @Override
     public void onEnable() {
         instance = this;
-        databaseManager = new DatabaseManager(this);
-        graphicalUserInterfaceManager = new GraphicalUserInterfaceManager(this);
+        graphicalUserInterfaceManager = new GraphicalUserInterfaceManager();
         tempestItemManager = new TempestItemManager();
         playerStateManager = new PlayerStateManager(this);
 
@@ -37,7 +35,8 @@ public final class Main extends JavaPlugin {
         this.registerListeners(packageName);
         this.registerCommands(packageName);
 
-        blueprintManager = new BlueprintManager(this);
+        mainConfiguration = new TempestConfiguration("config.yaml");
+        mainConfiguration.set("blueprint_prefix", "§bBlueprints §7> §r");
     }
 
     @Override

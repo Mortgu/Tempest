@@ -1,7 +1,6 @@
 package de.mortis.gui;
 
 import de.mortis.Main;
-import de.mortis.managers.PluginManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -13,16 +12,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 @Getter
-public class GraphicalUserInterfaceManager extends PluginManager {
+public class GraphicalUserInterfaceManager {
+
+    private final Main plugin = Main.getInstance();
 
     private final HashMap<InventoryIdentifiers, Inventory> registeredInventories;
     private final HashMap<InventoryIdentifiers, GraphicalUserInterface> registeredInventories2;
 
     private final ArrayList<Inventory> currentlyOpenInventories;
 
-    public GraphicalUserInterfaceManager(Main plugin) {
-        super(plugin);
-
+    public GraphicalUserInterfaceManager() {
         registeredInventories = new HashMap<>();
 
         // NEW IMPLEMENTATION
@@ -39,16 +38,6 @@ public class GraphicalUserInterfaceManager extends PluginManager {
             return;
         }
         registeredInventories2.get(identifier).openInventory(player, registeredInventories2.get(identifier).getInventory());
-    }
-
-    public void openGraphicalUserInterfaceByIdentifier(Player player, InventoryIdentifiers inventoryIdentifier) {
-        if (!registeredInventories.containsKey(inventoryIdentifier)) {
-            player.openInventory(Bukkit.createInventory(player, 54, "Kein Inventar gefunden!"));
-            return;
-        }
-
-        player.openInventory(registeredInventories.get(inventoryIdentifier));
-        plugin.getGraphicalUserInterfaceManager().getCurrentlyOpenInventories().add(registeredInventories.get(inventoryIdentifier));
     }
 
     public void registerInterface(String packageName) {

@@ -29,7 +29,7 @@ public abstract class PluginCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!commandInfo.requiresPlayer() && !(sender instanceof Player)) {
+        if (commandInfo.requiresPlayer() && !(sender instanceof Player)) {
             sender.sendMessage(ChatColor.RED + "You must be a player to execute this command.");
             return true;
         }

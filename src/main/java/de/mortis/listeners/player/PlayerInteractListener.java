@@ -2,7 +2,6 @@ package de.mortis.listeners.player;
 
 import de.mortis.Main;
 import de.mortis.items.types.gui.specifications.ActionTypes;
-import de.mortis.utilities.MousePatternDetector;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,8 +10,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 public class PlayerInteractListener implements Listener {
 
