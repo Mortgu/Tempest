@@ -1,6 +1,6 @@
 package de.mortis.items;
 
-import de.mortis.items.types.OriginTypes;
+import de.mortis.items.types.ItemOriginTypes;
 import de.mortis.items.types.gui.GuiTypes;
 import de.mortis.items.types.item.ItemTypes;
 
@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TempestItemInfo {
-    OriginTypes originType();
+    ItemOriginTypes originType();
     ItemTypes itemType() default ItemTypes.NULL;
     GuiTypes guiTypes() default GuiTypes.NULL;
 }

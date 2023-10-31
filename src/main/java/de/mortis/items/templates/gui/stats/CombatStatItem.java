@@ -2,14 +2,14 @@ package de.mortis.items.templates.gui.stats;
 
 import de.mortis.items.TempestItem;
 import de.mortis.items.TempestItemInfo;
-import de.mortis.items.types.OriginTypes;
+import de.mortis.items.types.ItemOriginTypes;
 import de.mortis.items.types.gui.GuiTypes;
 import de.mortis.utilities.ItemStackBuilder;
 import lombok.Getter;
 import org.bukkit.Material;
 
 @Getter
-@TempestItemInfo(originType = OriginTypes.GUI, guiTypes = GuiTypes.DISPLAY)
+@TempestItemInfo(originType = ItemOriginTypes.GUI, guiTypes = GuiTypes.DISPLAY)
 public class CombatStatItem extends TempestItem {
 
     public CombatStatItem() {

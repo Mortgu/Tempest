@@ -2,7 +2,7 @@ package de.mortis.items;
 
 import de.mortis.Main;
 import de.mortis.gui.InventoryIdentifiers;
-import de.mortis.items.types.OriginTypes;
+import de.mortis.items.types.ItemOriginTypes;
 import de.mortis.items.types.gui.GuiTypes;
 import de.mortis.items.types.gui.specifications.ActionTypes;
 import de.mortis.items.types.item.ItemTypes;
@@ -66,7 +66,7 @@ public abstract class TempestItem {
                     PersistentDataType.STRING, tempestPluginInfo.guiTypes().name());
     }
 
-    public void setOriginType(OriginTypes originType) {
+    public void setOriginType(ItemOriginTypes originType) {
         itemSpecificationContainer.set(new NamespacedKey(plugin, "origin-type"), PersistentDataType.STRING, originType.name());
     }
 

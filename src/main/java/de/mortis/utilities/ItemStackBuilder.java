@@ -1,6 +1,7 @@
 package de.mortis.utilities;
 
 import de.mortis.Main;
+import de.mortis.items.ItemLoreManager;
 import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -13,7 +14,6 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
 import java.util.UUID;
 
 @Getter
@@ -64,17 +64,13 @@ public class ItemStackBuilder {
         return this;
     }
 
-    // TODO: CHECK LINE LENGTH & SET DEFAULT COLOR TO §7
     public ItemStackBuilder setSimpleLore(String lore) {
         itemMeta.setLore(MessageHandler.lorifyString(lore));
         return this;
     }
 
-    public void addSimpleLore(ItemStack itemStack, String... lore) {
-        ItemMeta meta = itemStack.getItemMeta();
-
-        if (meta == null) return;
-        meta.setLore(Arrays.asList(lore));
+    public ItemStackBuilder addLoreManager(ItemLoreManager itemLore) {
+        return this;
     }
 
     public @NotNull ItemStack build() {

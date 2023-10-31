@@ -1,13 +1,12 @@
 package de.mortis.listeners.player;
 
 import de.mortis.Main;
-import de.mortis.items.types.OriginTypes;
+import de.mortis.items.types.ItemOriginTypes;
 import de.mortis.items.types.gui.GuiTypes;
 import de.mortis.items.types.gui.specifications.ActionTypes;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -30,11 +29,11 @@ public class InventoryClickListener implements Listener {
             return;
         }
 
-        OriginTypes originType = OriginTypes.valueOf(plugin.getTempestItemManager().getItemOriginType(clickedItem));
+        ItemOriginTypes originType = ItemOriginTypes.valueOf(plugin.getTempestItemManager().getItemOriginType(clickedItem));
 
         if (inventoryAction.equals(InventoryAction.HOTBAR_SWAP) ||
                 event.getClick().equals(ClickType.NUMBER_KEY) ||
-                originType.equals(OriginTypes.GUI)) {
+                originType.equals(ItemOriginTypes.GUI)) {
             event.setCancelled(true);
             player.updateInventory();
         }
