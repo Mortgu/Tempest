@@ -1,20 +1,13 @@
 package de.mortis.gui.inventories;
 
 import de.mortis.Main;
-import de.mortis.commands.blueprint.BlueprintCommand;
 import de.mortis.gui.GraphicalUserInterface;
 import de.mortis.gui.InventoryIdentifiers;
 import de.mortis.items.templates.gui.InventoryBackItem;
-import de.mortis.items.templates.gui.main.*;
 import de.mortis.utilities.ItemStackBuilder;
 import lombok.Getter;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.List;
 
 @Getter
 public class BlueprintInventory extends GraphicalUserInterface {

@@ -3,7 +3,6 @@ package de.mortis.gui.inventories;
 import de.mortis.Main;
 import de.mortis.gui.GraphicalUserInterface;
 import de.mortis.gui.InventoryIdentifiers;
-import de.mortis.items.templates.gui.InventoryBackItem;
 import de.mortis.utilities.ItemStackBuilder;
 import lombok.Getter;
 import org.bukkit.Material;

@@ -2,7 +2,6 @@ package de.mortis.gui;
 
 import de.mortis.Main;
 import lombok.Getter;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.reflections.Reflections;

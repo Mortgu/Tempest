@@ -1,7 +1,6 @@
 package de.mortis.gui;
 
 import de.mortis.Main;
-import de.mortis.items.templates.gui.InventoryBackItem;
 import de.mortis.items.templates.gui.InventoryCloseItem;
 import de.mortis.items.templates.gui.InventoryFillerItem;
 import de.mortis.utilities.ItemStackBuilder;

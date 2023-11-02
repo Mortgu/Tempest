@@ -6,7 +6,6 @@ import de.mortis.items.templates.gui.InventoryBackItem;
 import de.mortis.items.templates.gui.stats.CombatStatItem;
 import de.mortis.utilities.ItemStackBuilder;
 import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
 
 public class PlayerStatsInventory extends GraphicalUserInterface {
 
