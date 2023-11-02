@@ -1,6 +1,7 @@
 package de.mortis.player;
 
 import de.mortis.Main;
+import de.mortis.items.templates.gui.MenuControllerItem;
 import de.mortis.player.types.PlayerAttributes;
 import lombok.Getter;
 import net.md_5.bungee.api.ChatMessageType;
@@ -28,6 +29,8 @@ public class TempestPlayer {
         Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             player.sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§c10❤10     §7300 §fW §7-1500     §b100☀100"));
         }, 5L, 5L);
+
+        player.getInventory().setItem(8, new MenuControllerItem().getItemStack());
     }
 
     public void savePlayerLocation() {

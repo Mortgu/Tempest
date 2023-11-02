@@ -15,16 +15,12 @@ public class GraphicalUserInterfaceManager {
 
     private final Main plugin = Main.getInstance();
 
-    private final HashMap<InventoryIdentifiers, Inventory> registeredInventories;
-    private final HashMap<InventoryIdentifiers, GraphicalUserInterface> registeredInventories2;
+    private final HashMap<InventoryIdentifiers, GraphicalUserInterface> registeredInventories;
 
     private final ArrayList<Inventory> currentlyOpenInventories;
 
     public GraphicalUserInterfaceManager() {
         registeredInventories = new HashMap<>();
-
-        // NEW IMPLEMENTATION
-        registeredInventories2 = new HashMap<>();
 
         currentlyOpenInventories = new ArrayList<>();
 
@@ -32,23 +28,18 @@ public class GraphicalUserInterfaceManager {
     }
 
     public void openByIdentifier(Player player, InventoryIdentifiers identifier) {
-        if (!registeredInventories2.containsKey(identifier)) {
+        if (!registeredInventories.containsKey(identifier)) {
             player.sendMessage("Inventory not found!");
             return;
         }
-        registeredInventories2.get(identifier).openInventory(player, registeredInventories2.get(identifier).getInventory());
+        registeredInventories.get(identifier).openInventory(player, registeredInventories.get(identifier).getInventory());
     }
 
     public void registerInterface(String packageName) {
         for (Class<? extends GraphicalUserInterface> clazz : new Reflections(packageName + ".inventories").getSubTypesOf(GraphicalUserInterface.class)) {
             try {
                 GraphicalUserInterface graphicalUserInterface = clazz.getDeclaredConstructor().newInstance();
-
-                registeredInventories.put(graphicalUserInterface.getInventoryIdentifier(), graphicalUserInterface.getInventory());
-
-                // NEW IMPLEMENTATION
-                registeredInventories2.put(graphicalUserInterface.getInventoryIdentifier(), graphicalUserInterface);
-
+                registeredInventories.put(graphicalUserInterface.getInventoryIdentifier(), graphicalUserInterface);
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                      NoSuchMethodException e) {
                 throw new RuntimeException(e);

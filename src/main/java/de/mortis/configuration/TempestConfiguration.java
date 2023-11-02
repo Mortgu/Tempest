@@ -43,7 +43,6 @@ public class TempestConfiguration {
         }
     }
 
-
     public void save(File configurationFile) {
         try {
             configuration.save(new File(plugin.getDataFolder(), configurationFile.getName()));
