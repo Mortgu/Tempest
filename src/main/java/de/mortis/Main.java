@@ -5,6 +5,8 @@ import de.mortis.commands.PluginCommand;
 import de.mortis.configuration.TempestConfiguration;
 import de.mortis.gui.GraphicalUserInterfaceManager;
 import de.mortis.items.TempestItemManager;
+import de.mortis.mongo.DatabaseManager;
+import de.mortis.player.PlayerLevelManager;
 import de.mortis.player.PlayerStateManager;
 import lombok.Getter;
 import org.bukkit.event.Listener;
@@ -19,7 +21,11 @@ public final class Main extends JavaPlugin {
     @Getter
     public static Main instance;
 
+    private DatabaseManager databaseManager;
+
     public PlayerStateManager playerStateManager;
+    private PlayerLevelManager playerLevelManager;
+
     public GraphicalUserInterfaceManager graphicalUserInterfaceManager;
     public TempestItemManager tempestItemManager;
     private BlueprintManager blueprintManager;
@@ -29,10 +35,15 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+
+        databaseManager = new DatabaseManager();
+
         blueprintManager = new BlueprintManager();
         graphicalUserInterfaceManager = new GraphicalUserInterfaceManager();
         tempestItemManager = new TempestItemManager();
         playerStateManager = new PlayerStateManager(this);
+
+        playerLevelManager = new PlayerLevelManager();
 
         String packageName = getClass().getPackage().getName();
         this.registerListeners(packageName);

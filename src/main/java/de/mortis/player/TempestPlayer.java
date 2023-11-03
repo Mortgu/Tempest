@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 @Getter
@@ -21,6 +22,8 @@ public class TempestPlayer {
     private final String name;
     private PlayerAttributes[] playerAttributes;
     private Inventory inventory;
+
+    private static HashMap<Integer, ?> unlockedLevel;
 
     public TempestPlayer(Player player) {
         this.uuid = player.getUniqueId();
