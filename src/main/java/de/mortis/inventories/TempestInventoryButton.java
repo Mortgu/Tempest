@@ -1,4 +1,3 @@
 package de.mortis.inventories;
 
-public class TempestInventoryButton {
-}
+public class TempestInventoryButton {}

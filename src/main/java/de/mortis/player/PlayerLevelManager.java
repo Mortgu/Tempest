@@ -14,7 +14,6 @@ public class PlayerLevelManager extends Document {
             document.put("level", i);
             document.put("reward", "hier steht der Reward");
 
-            plugin.getDatabaseManager().insert(document, "player_levels");
         }
     }
 }

@@ -20,7 +20,7 @@ public class DatabaseManager {
         mongoDatabase = mongoClient.getDatabase("tempest");
     }
 
-    public void insert(Document document, String collectionName) {
+    public void insert(String collectionName, Document document) {
         MongoCollection<Document> collection = mongoDatabase.getCollection(collectionName);
         collection.insertOne(document);
     }

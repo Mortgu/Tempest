@@ -6,6 +6,8 @@ import de.mortis.player.types.PlayerAttributes;
 import lombok.Getter;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -34,6 +36,7 @@ public class TempestPlayer {
         }, 5L, 5L);
 
         player.getInventory().setItem(8, new MenuControllerItem().getItemStack());
+        plugin.getDatabaseManager().insert("players", new Document().append("_id", new ObjectId()).append("name", player.getName()));
     }
 
     public void savePlayerLocation() {
