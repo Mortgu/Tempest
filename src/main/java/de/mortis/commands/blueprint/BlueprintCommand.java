@@ -1,7 +1,6 @@
 package de.mortis.commands.blueprint;
 
 import de.mortis.Main;
-import de.mortis.blueprint.BlueprintManager;
 import de.mortis.commands.CommandInfo;
 import de.mortis.commands.PluginCommand;
 import de.mortis.gui.InventoryIdentifiers;
@@ -14,11 +13,12 @@ public class BlueprintCommand extends PluginCommand {
 
     @Override
     public void execute(Player player, String[] args) {
-
         if (args.length <= 0) {
             plugin.getGraphicalUserInterfaceManager().openByIdentifier(player, InventoryIdentifiers.BLUEPRINT);
             return;
         }
+
+
 
         if (args.length == 1 && args[0].equalsIgnoreCase("create")) {
             player.sendMessage(plugin.getMainConfiguration().get("blueprint_prefix") + "Creating new item blueprint");

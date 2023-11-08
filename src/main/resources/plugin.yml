@@ -8,7 +8,3 @@ commands:
     description: System command
     usage: /<command>
     permission: core.blueprint
-  area:
-    description: System command
-    usage: /<command>
-    permission: core.area

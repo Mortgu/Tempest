@@ -33,10 +33,9 @@ public abstract class PluginCommand implements CommandExecutor, TabCompleter {
             sender.sendMessage(ChatColor.RED + "You must be a player to execute this command.");
             return true;
         }
+        commands.put(command, args);
 
         Player player = (Player) sender;
-
-        commands.put(command, args);
 
         if (!commandInfo.permission().isEmpty()) {
             if (!sender.hasPermission(commandInfo.permission())) {
@@ -69,22 +68,15 @@ public abstract class PluginCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
-    /**
-     *
-     *
-     public CommandMap getCommandMap() throws NoSuchFieldException, IllegalAccessException {
-     if (!(Bukkit.getPluginManager() instanceof SimplePluginManager)) {
-     return null;
-     }
+    public CommandMap getCommandMap() throws NoSuchFieldException, IllegalAccessException {
+        if (!(Bukkit.getPluginManager() instanceof SimplePluginManager))
+            return null;
 
-     Field field = SimplePluginManager.class.getDeclaredField("commandMap");
-     field.setAccessible(true);
+        Field field = SimplePluginManager.class.getDeclaredField("commandMap");
+        field.setAccessible(true);
 
-     return (CommandMap) field.get(Bukkit.getPluginManager());
-     }
-     * @param player
-     * @param args
-     */
+        return (CommandMap) field.get(Bukkit.getPluginManager());
+    }
 
     public void execute(Player player, String[] args) {}
     public void execute(CommandSender sender, String[] args) {}
