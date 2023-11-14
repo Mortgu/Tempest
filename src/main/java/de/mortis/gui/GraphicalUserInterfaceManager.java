@@ -32,7 +32,7 @@ public class GraphicalUserInterfaceManager {
             player.sendMessage("Inventory not found!");
             return;
         }
-        registeredInventories.get(identifier).openInventory(player, registeredInventories.get(identifier).getInventory());
+        player.openInventory(registeredInventories.get(identifier).getInventory());
     }
 
     public void registerInterface(String packageName) {

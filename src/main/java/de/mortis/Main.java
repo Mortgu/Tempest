@@ -4,6 +4,7 @@ import de.mortis.blueprint.BlueprintManager;
 import de.mortis.commands.PluginCommand;
 import de.mortis.configuration.TempestConfiguration;
 import de.mortis.gui.GraphicalUserInterfaceManager;
+import de.mortis.inventories.TempestInventoryManager;
 import de.mortis.items.TempestItemManager;
 import de.mortis.mongo.DatabaseManager;
 import de.mortis.player.PlayerLevelManager;
@@ -30,6 +31,8 @@ public final class Main extends JavaPlugin {
     public TempestItemManager tempestItemManager;
     private BlueprintManager blueprintManager;
 
+    private TempestInventoryManager tempestInventoryManager;
+
     private TempestConfiguration mainConfiguration;
 
     @Override
@@ -40,6 +43,7 @@ public final class Main extends JavaPlugin {
 
         blueprintManager = new BlueprintManager();
         graphicalUserInterfaceManager = new GraphicalUserInterfaceManager();
+        tempestInventoryManager = new TempestInventoryManager();
         tempestItemManager = new TempestItemManager();
         playerStateManager = new PlayerStateManager(this);
 
