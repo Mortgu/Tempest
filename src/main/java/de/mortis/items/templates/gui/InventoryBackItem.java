@@ -1,6 +1,5 @@
 package de.mortis.items.templates.gui;
 
-import de.mortis.gui.InventoryIdentifiers;
 import de.mortis.items.TempestItem;
 import de.mortis.items.TempestItemInfo;
 import de.mortis.items.types.ItemOriginTypes;
@@ -17,8 +16,6 @@ public class InventoryBackItem extends TempestItem {
     public InventoryBackItem() {
         super(new ItemStackBuilder(Material.ARROW)
                 .setDisplayName("§eBack").build());
-
-        super.addCtAction(ActionTypes.OPEN_INVENTORY, InventoryIdentifiers.GAME_MENU);
 
         super.buildItem();
     }

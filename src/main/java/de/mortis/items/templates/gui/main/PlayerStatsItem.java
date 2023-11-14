@@ -1,11 +1,9 @@
 package de.mortis.items.templates.gui.main;
 
-import de.mortis.gui.InventoryIdentifiers;
 import de.mortis.items.TempestItem;
 import de.mortis.items.TempestItemInfo;
 import de.mortis.items.types.ItemOriginTypes;
 import de.mortis.items.types.gui.GuiTypes;
-import de.mortis.items.types.gui.specifications.ActionTypes;
 import de.mortis.utilities.ItemStackBuilder;
 import lombok.Getter;
 import org.bukkit.Material;
@@ -21,8 +19,6 @@ public class PlayerStatsItem extends TempestItem {
                 .setSimpleLore("§7View your equipment, stats, and more!")
                 .setOwningPlayer(player)
                 .build());
-
-        super.addCtAction(ActionTypes.OPEN_INVENTORY, InventoryIdentifiers.STATS_INVENTORY);
 
         super.buildItem();
     }

@@ -1,7 +1,6 @@
 package de.mortis.items;
 
 import de.mortis.Main;
-import de.mortis.gui.InventoryIdentifiers;
 import de.mortis.items.types.ItemOriginTypes;
 import de.mortis.items.types.gui.GuiTypes;
 import de.mortis.items.types.gui.specifications.ActionTypes;
@@ -80,9 +79,9 @@ public abstract class TempestItem {
         itemSpecificationContainer.set(new NamespacedKey(plugin, "type"), PersistentDataType.STRING, itemTypes.name());
     }
 
-    public void addCtAction(ActionTypes actionType, InventoryIdentifiers inventoryIdentifiers) {
+    public void addCtAction(ActionTypes actionType, String inventoryIdentifiers) {
         itemCtActionContainer.set(new NamespacedKey(plugin, "action-key"), PersistentDataType.STRING, actionType.name());
-        itemCtActionContainer.set(new NamespacedKey(plugin, "action-value"), PersistentDataType.STRING, inventoryIdentifiers.name());
+        itemCtActionContainer.set(new NamespacedKey(plugin, "action-value"), PersistentDataType.STRING, inventoryIdentifiers);
         itemSpecificationContainer.set(new NamespacedKey(plugin, "ct-action"), PersistentDataType.TAG_CONTAINER, itemCtActionContainer);
     }
 

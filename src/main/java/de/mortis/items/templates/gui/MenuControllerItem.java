@@ -1,6 +1,6 @@
 package de.mortis.items.templates.gui;
 
-import de.mortis.gui.InventoryIdentifiers;
+import de.mortis.inventories.templates.PlayerLevelInventory;
 import de.mortis.items.TempestItem;
 import de.mortis.items.TempestItemInfo;
 import de.mortis.items.types.ItemOriginTypes;
@@ -18,7 +18,8 @@ public class MenuControllerItem extends TempestItem {
         super(new ItemStackBuilder(Material.BOOK)
                 .setDisplayName("§aTempest Menu §8(Right Click)").build());
 
-        super.addCtAction(ActionTypes.OPEN_INVENTORY, InventoryIdentifiers.GAME_MENU);
+        super.addCtAction(ActionTypes.OPEN_INVENTORY, "PLAYER_LEVELS");
+
 
         super.buildItem();
     }

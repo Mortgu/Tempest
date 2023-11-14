@@ -19,9 +19,6 @@ public class InventoryOpenListener implements Listener {
         Inventory inventory = event.getInventory();
 
         if (inventory.getType().equals(InventoryType.CRAFTING)) return;
-
-        plugin.getGraphicalUserInterfaceManager().getCurrentlyOpenInventories().add(inventory);
-        event.getPlayer().sendMessage(event.getInventory().getType().toString() + " " + String.valueOf(plugin.getGraphicalUserInterfaceManager().getCurrentlyOpenInventories().size()));
     }
 
     @EventHandler
