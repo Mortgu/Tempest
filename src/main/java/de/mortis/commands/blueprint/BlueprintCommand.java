@@ -13,8 +13,21 @@ public class BlueprintCommand extends PluginCommand {
 
     @Override
     public void execute(Player player, String[] args) {
-        player.sendMessage("§bBlueprint >");
+        if (args.length <= 0) {
+            plugin.getGraphicalUserInterfaceManager().openByIdentifier(player, InventoryIdentifiers.BLUEPRINT);
+            return;
+        }
 
-        plugin.getGraphicalUserInterfaceManager().openByIdentifier(player, InventoryIdentifiers.BLUEPRINT);
+
+
+        if (args.length == 1 && args[0].equalsIgnoreCase("create")) {
+            player.sendMessage(plugin.getMainConfiguration().get("blueprint_prefix") + "Creating new item blueprint");
+            plugin.getBlueprintManager().create("unnamed");
+            plugin.getGraphicalUserInterfaceManager().openByIdentifier(player, InventoryIdentifiers.CREATE_BLUEPRINT);
+        }
+
+        if (args.length == 1 && args[0].equalsIgnoreCase("list")) {
+            player.sendMessage(plugin.getMainConfiguration().get("blueprint_prefix") + "§7There are currently §a" + plugin.getBlueprintManager().list().size() + " §7blueprint registered.");
+        }
     }
 }

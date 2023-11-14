@@ -1,9 +1,7 @@
 package de.mortis.gui;
 
 import de.mortis.Main;
-import de.mortis.managers.PluginManager;
 import lombok.Getter;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.reflections.Reflections;
@@ -13,20 +11,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 @Getter
-public class GraphicalUserInterfaceManager extends PluginManager {
+public class GraphicalUserInterfaceManager {
 
-    private final HashMap<InventoryIdentifiers, Inventory> registeredInventories;
-    private final HashMap<InventoryIdentifiers, GraphicalUserInterface> registeredInventories2;
+    private final Main plugin = Main.getInstance();
+
+    private final HashMap<InventoryIdentifiers, GraphicalUserInterface> registeredInventories;
 
     private final ArrayList<Inventory> currentlyOpenInventories;
 
-    public GraphicalUserInterfaceManager(Main plugin) {
-        super(plugin);
-
+    public GraphicalUserInterfaceManager() {
         registeredInventories = new HashMap<>();
-
-        // NEW IMPLEMENTATION
-        registeredInventories2 = new HashMap<>();
 
         currentlyOpenInventories = new ArrayList<>();
 
@@ -34,33 +28,18 @@ public class GraphicalUserInterfaceManager extends PluginManager {
     }
 
     public void openByIdentifier(Player player, InventoryIdentifiers identifier) {
-        if (!registeredInventories2.containsKey(identifier)) {
+        if (!registeredInventories.containsKey(identifier)) {
             player.sendMessage("Inventory not found!");
             return;
         }
-        registeredInventories2.get(identifier).openInventory(player, registeredInventories2.get(identifier).getInventory());
-    }
-
-    public void openGraphicalUserInterfaceByIdentifier(Player player, InventoryIdentifiers inventoryIdentifier) {
-        if (!registeredInventories.containsKey(inventoryIdentifier)) {
-            player.openInventory(Bukkit.createInventory(player, 54, "Kein Inventar gefunden!"));
-            return;
-        }
-
-        player.openInventory(registeredInventories.get(inventoryIdentifier));
-        plugin.getGraphicalUserInterfaceManager().getCurrentlyOpenInventories().add(registeredInventories.get(inventoryIdentifier));
+        player.openInventory(registeredInventories.get(identifier).getInventory());
     }
 
     public void registerInterface(String packageName) {
         for (Class<? extends GraphicalUserInterface> clazz : new Reflections(packageName + ".inventories").getSubTypesOf(GraphicalUserInterface.class)) {
             try {
                 GraphicalUserInterface graphicalUserInterface = clazz.getDeclaredConstructor().newInstance();
-
-                registeredInventories.put(graphicalUserInterface.getInventoryIdentifier(), graphicalUserInterface.getInventory());
-
-                // NEW IMPLEMENTATION
-                registeredInventories2.put(graphicalUserInterface.getInventoryIdentifier(), graphicalUserInterface);
-
+                registeredInventories.put(graphicalUserInterface.getInventoryIdentifier(), graphicalUserInterface);
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                      NoSuchMethodException e) {
                 throw new RuntimeException(e);

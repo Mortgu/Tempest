@@ -1,7 +1,6 @@
 package de.mortis.utilities;
 
 import de.mortis.Main;
-import de.mortis.items.ItemLoreManager;
 import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -32,8 +31,6 @@ public class ItemStackBuilder {
 
         if (itemMeta != null)
             this.setItemFlags(ItemFlag.HIDE_ITEM_SPECIFICS, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES);
-
-
     }
 
     public ItemStackBuilder setOwningPlayer(Player player) {
@@ -66,10 +63,6 @@ public class ItemStackBuilder {
 
     public ItemStackBuilder setSimpleLore(String lore) {
         itemMeta.setLore(MessageHandler.lorifyString(lore));
-        return this;
-    }
-
-    public ItemStackBuilder addLoreManager(ItemLoreManager itemLore) {
         return this;
     }
 

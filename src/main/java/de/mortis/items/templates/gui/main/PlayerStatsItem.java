@@ -3,7 +3,6 @@ package de.mortis.items.templates.gui.main;
 import de.mortis.gui.InventoryIdentifiers;
 import de.mortis.items.TempestItem;
 import de.mortis.items.TempestItemInfo;
-import de.mortis.items.lore.SimpleItemLore;
 import de.mortis.items.types.ItemOriginTypes;
 import de.mortis.items.types.gui.GuiTypes;
 import de.mortis.items.types.gui.specifications.ActionTypes;
@@ -20,7 +19,6 @@ public class PlayerStatsItem extends TempestItem {
         super(new ItemStackBuilder(Material.PLAYER_HEAD)
                 .setDisplayName("§aYour Tempest Profile")
                 .setSimpleLore("§7View your equipment, stats, and more!")
-                .addLoreManager(new SimpleItemLore())
                 .setOwningPlayer(player)
                 .build());
 

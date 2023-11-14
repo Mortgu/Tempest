@@ -1,5 +1,8 @@
 package de.mortis.listeners.player;
 
+import de.mortis.Main;
+import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Statistic;
@@ -17,5 +20,7 @@ public class PlayerQuitListener implements Listener {
         Bukkit.getLogger().info(String.valueOf(player.getStatistic(Statistic.MINE_BLOCK, Material.STONE)));
 
         event.setQuitMessage(null);
+
+        Main.getInstance().getDatabaseManager().insert("players", new Document().append("_id", new ObjectId()));
     }
 }
