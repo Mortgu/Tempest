@@ -30,6 +30,10 @@ public class InventoryManager {
         }
     }
 
+    public void renderNextInventoryPage(String identifier) {
+        registeredInventories.get(identifier).renderPage(registeredInventories.get(identifier).getCurrentPageIndex() + 1);
+    }
+
     public void openInventory(Player player, String identifier) {
         registeredInventories.get(identifier).openInventory(player);
     }

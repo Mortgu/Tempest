@@ -9,7 +9,7 @@ public class PlayerLevelInventory extends TempestInventory {
     public PlayerLevelInventory() {
         super("PLAYER_LEVELS", 54, "Levels");
 
-        super.placeItem(53, new ItemStackBuilder(Material.DIAMOND_SWORD).build());
+        super.placeItem(5, new ItemStackBuilder(Material.DIAMOND_SWORD).build());
         super.placeItem(198, new ItemStackBuilder(Material.DIAMOND_SWORD).build());
     }
 }

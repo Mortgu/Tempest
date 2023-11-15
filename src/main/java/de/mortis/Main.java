@@ -38,11 +38,11 @@ public final class Main extends JavaPlugin {
         instance = this;
 
         databaseManager = new DatabaseManager();
+        inventoryManager = new InventoryManager();
 
         blueprintManager = new BlueprintManager();
         tempestItemManager = new TempestItemManager();
         playerStateManager = new PlayerStateManager(this);
-        inventoryManager = new InventoryManager();
 
         playerLevelManager = new PlayerLevelManager();
 
