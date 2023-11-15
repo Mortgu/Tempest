@@ -79,15 +79,17 @@ public abstract class TempestItem {
         itemSpecificationContainer.set(new NamespacedKey(plugin, "type"), PersistentDataType.STRING, itemTypes.name());
     }
 
-    public void addCtAction(ActionTypes actionType, String inventoryIdentifiers) {
+    public void addCallToAction(ActionTypes actionType, String inventoryIdentifiers) {
         itemCtActionContainer.set(new NamespacedKey(plugin, "action-key"), PersistentDataType.STRING, actionType.name());
         itemCtActionContainer.set(new NamespacedKey(plugin, "action-value"), PersistentDataType.STRING, inventoryIdentifiers);
         itemSpecificationContainer.set(new NamespacedKey(plugin, "ct-action"), PersistentDataType.TAG_CONTAINER, itemCtActionContainer);
+        this.itemMeta.setDisplayName(this.itemMeta.getDisplayName() + " §8(Right Click)");
     }
 
-    public void addCtAction(ActionTypes actionType) {
+    public void addCallToAction(ActionTypes actionType) {
         itemCtActionContainer.set(new NamespacedKey(plugin, "action-key"), PersistentDataType.STRING, actionType.name());
         itemSpecificationContainer.set(new NamespacedKey(plugin, "ct-action"), PersistentDataType.TAG_CONTAINER, itemCtActionContainer);
+        this.itemMeta.setDisplayName(this.itemMeta.getDisplayName() + " §8(Right Click)");
     }
 
     public void buildItem() {

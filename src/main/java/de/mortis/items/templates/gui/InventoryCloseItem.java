@@ -17,7 +17,7 @@ public class InventoryCloseItem extends TempestItem {
         super(new ItemStackBuilder(Material.BARRIER)
                 .setDisplayName("§cClose").build());
 
-        super.addCtAction(ActionTypes.CLOSE_INVENTORY);
+        super.addCallToAction(ActionTypes.CLOSE_INVENTORY);
 
         super.buildItem();
     }

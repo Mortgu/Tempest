@@ -7,7 +7,6 @@ public enum ActionTypes {
     OPEN_INVENTORY {
         @Override
         public void onTrigger(Player player, String inventoryIdentifier) {
-            Main.getInstance().getInventoryManager().openInventory(player, inventoryIdentifier);
         }
     },
     CLOSE_INVENTORY {
